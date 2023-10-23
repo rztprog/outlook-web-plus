@@ -9,8 +9,8 @@ Remove ads and improve Outlook's web mailbox.
 
 ## Screens
 
-![](https://addons.mozilla.org/user-media/previews/full/289/289012.png|width=30)
-![](https://addons.mozilla.org/user-media/previews/full/289/289013.png|width=30)
+![Before](https://addons.mozilla.org/user-media/previews/full/289/289012.png)
+![After](https://addons.mozilla.org/user-media/previews/full/289/289013.png0)
 
 ## Features
 
