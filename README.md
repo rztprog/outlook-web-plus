@@ -7,17 +7,17 @@
 
 Remove ads and improve Outlook's web mailbox.
 
-## Screens
-
-![Before](https://addons.mozilla.org/user-media/previews/full/289/289012.png)
-![After](https://addons.mozilla.org/user-media/previews/full/289/289013.png)
-
 ## Features
 
 - Remove the left banner containing quick links and Microsoft 365 content.
 - Remove the Microsoft 365 upgrade advertisement located below your email folders.
 - Remove the Meet, Skype, and OneNote icons from the top toolbar.
 - Appends the number of emails in a vibrant green color, positioned alongside the current folder title.
+
+## Screens
+
+![Before](https://addons.mozilla.org/user-media/previews/full/289/289012.png)
+![After](https://addons.mozilla.org/user-media/previews/full/289/289013.png)
 
 ## Installation
 
