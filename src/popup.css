@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-family: 'SegoeUI-SemiBold-final', 'Segoe UI Semibold', 'SegoeUI-Regular-final', 'Segoe UI', 'Segoe', -apple-system, 'BlinkMacSystemFont', 'Roboto', 'Helvetica Neue', 'Tahoma', 'Helvetica', 'Arial', sans-serif;
+}
+
+body {
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 8px;
+    max-width: 18rem;
+	min-width: 16rem;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+sup {
+    vertical-align: super;
+}
+
+.github:hover {
+    color: rgb(21, 45, 60);
+}
+
+.rating:hover {
+    color: rgb(235, 235, 0);
+}
+
+.rating:hover::before,
+.github:hover::before{
+    position: absolute;
+    font-family: "Font Awesome 6 Free";
+    font-weight: bold;
+    font-size: 16px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.rating:hover::before{
+    content: "\f5c0";
+}
+
+.github:hover::before{
+    color: transparent;
+    content: "\f111";
+}
+
+.icon {
+    width: fit-content;
+}
+
+.labels {
+    display: flex;
+    flex-direction: column;
+}
+
+.setting {
+    user-select: none;
+}
+
+.settings {
+    padding: 12px;
+    border-radius: 4px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+
+}
+
+#ext-version {
+    font-family: Blippo, fantasy;
+    font-size: 10px;
+}
+
+/* Shiny Effet on title */
+@keyframes shiny {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(90deg, rgba(20, 144, 223), #161d1f, rgba(40, 168, 234), rgba(20, 144, 223));
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shiny 5s linear infinite;
+}

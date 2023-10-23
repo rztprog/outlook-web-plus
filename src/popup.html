@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+    Inspired by 'Hide Youtube-Shorts' source-code (https://github.com/Vulpelo/hide-youtube-shorts) - by Vulpelo
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="popup.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+    </head>
+    <body>
+        <header>
+            <img class="icon" src="../icons/mop48.png" title="Outlook Web Plus icon">
+            <h2 class="title">Outlook Web Plus<sup>+</sup></h2>
+            <!-- <small>RZTPROG 2023</small> -->
+        </header>
+        <!-- Settings -->
+        <fieldset class="settings">
+            <legend>
+                Settings
+            </legend>
+
+            <div class="labels">
+                <label class="setting">
+                    <input type="checkbox" id="hideleftbannerInput">
+                    <span class="switchLabel">
+                        Hide Left banner
+                    </span>
+                </label>
+                <label class="setting">
+                    <input type="checkbox" id="hidepremiumadInput">
+                    <span class="switchLabel">
+                        Hide Microsoft 365 Premium Ad
+                    </span>
+                </label>
+                <label class="setting">
+                    <input type="checkbox" id="hidetopiconsInput">
+                    <span class="switchLabel">
+                        Hide Meet, Skype, OneNote icons
+                    </span>
+                </label>
+            </div>
+        </fieldset>
+        <footer>
+            <!-- Links -->
+            <span>
+                <a href="https://gist.github.com/rztprog/373f3df9ad74242b7bbb8d260e67e5dd" class="github">
+                    <i class="fa-brands fa-github" title="Github"></i>
+                </a>
+                <a href="https://addons.mozilla.org/fr/firefox/addon/outlook-web-plus/" class="rating">
+                    <i class="fa-solid fa-star-half-stroke" title="Rating"></i>
+                </a>
+            </span>
+            <!-- Version -->
+            <span>
+                <i class="fa-solid fa-code-compare"></i>
+                <small id="ext-version"></small>
+            </span>
+        </footer>
+        <script src="popup.js"></script>
+    </body>
+</html>

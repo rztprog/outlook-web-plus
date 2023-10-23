@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Outlook Web Plus",
+  "version": "1.0.3",
+  "description": "Remove ads and enhance Outlook web mailbox",
+
+  "icons": {
+    "48": "icons/mop48.png",
+    "96": "icons/mop96.png"
+  },
+
+  "permissions": [
+    "storage"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.outlook.live.com/*"],
+      "js": ["./src/outlook_web_plus_min.js"]
+    }
+  ],
+
+  "browser_action": {
+    "default_icon":{
+      "48": "icons/mop48.png",
+      "96": "icons/mop96.png"
+    },
+    "default_title": "Outlook Web Plus",
+    "default_popup": "./src/popup.html"
+  }
+}
