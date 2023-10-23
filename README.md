@@ -1,9 +1,16 @@
-# Outlook web plus
+
+![Outlook web plus icon](https://addons.mozilla.org/user-media/addon_icons/2789/2789916-64.png?modified=2ae24ebb)
+# Outlook Web Plus
 
 ![Mozilla Add-on Users](https://img.shields.io/amo/users/outlook-web-plus?logo=Firefox&label=Firefox%20Users)
 ![Mozilla Add-on Version](https://img.shields.io/amo/v/outlook-web-plus?logo=Firefox&label=Version)
 
 Remove ads and improve Outlook's web mailbox.
+
+## Screens
+
+![Before](https://addons.mozilla.org/user-media/previews/full/289/289012.png|width=30)
+![After](https://addons.mozilla.org/user-media/previews/full/289/289013.png|width=30)
 
 ## Features
 
