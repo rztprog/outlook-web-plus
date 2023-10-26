@@ -34,3 +34,7 @@ or add the Add-on temporarily:
 ## License
 
 [BSD 2-Clause License](https://github.com/rztprog/outlook-web-plus/blob/main/LICENSE)
+
+## Thanks to
+
+- Vulpelo for ![Hide Youtube-Shorts](https://github.com/Vulpelo/hide-youtube-shorts) source code
