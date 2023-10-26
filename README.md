@@ -14,7 +14,7 @@ Remove ads and improve Outlook's web mailbox.
 - Remove the Meet, Skype, and OneNote icons from the top toolbar.
 - Appends the number of emails in a vibrant green color, positioned alongside the current folder title.
 
-## Screens
+## Preview
 
 ![Before](https://addons.mozilla.org/user-media/previews/full/289/289012.png)
 ![After](https://addons.mozilla.org/user-media/previews/full/289/289013.png)
