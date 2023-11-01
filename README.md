@@ -15,7 +15,7 @@ Remove ads and improve Outlook's web mailbox.
 - Appends the number of emails in a vibrant green color, positioned alongside the current folder title.
 
 ## Previous Versions (Gist)
-![Version from 0.1 to 0.7](https://gist.github.com/rztprog/373f3df9ad74242b7bbb8d260e67e5dd)
+[Version from 0.1 to 0.7](https://gist.github.com/rztprog/373f3df9ad74242b7bbb8d260e67e5dd)
 
 ## Preview
 
@@ -40,4 +40,4 @@ or add the Add-on temporarily:
 
 ## Thanks to
 
-- ![Vulpelo](https://github.com/Vulpelo) for ![Hide Youtube-Shorts](https://github.com/Vulpelo/hide-youtube-shorts) source code
+- [Vulpelo](https://github.com/Vulpelo) for [Hide Youtube-Shorts](https://github.com/Vulpelo/hide-youtube-shorts) source code
