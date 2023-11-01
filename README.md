@@ -37,4 +37,4 @@ or add the Add-on temporarily:
 
 ## Thanks to
 
-- Vulpelo for ![Hide Youtube-Shorts](https://github.com/Vulpelo/hide-youtube-shorts) source code
+- ![Vulpelo](https://github.com/Vulpelo) for ![Hide Youtube-Shorts](https://github.com/Vulpelo/hide-youtube-shorts) source code
