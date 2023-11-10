@@ -12,7 +12,11 @@ Remove ads and improve Outlook's web mailbox.
 - Remove the left banner containing quick links and Microsoft 365 content.
 - Remove the Microsoft 365 upgrade advertisement located below your email folders.
 - Remove the Meet, Skype, and OneNote icons from the top toolbar.
-- Appends the number of emails in a vibrant green color, positioned alongside the current folder title.
+  
+- Add/Remove Outlook+ Premium Logo
+- Add/Remove Email counter (+ Color Support, RGB, RGBA, Hexa, Color Name)
+- Add/Remove 'Check all email' button
+- Add/Remove Align Title Folder
 
 ## Previous Versions (Gist)
 [Version from 0.1 to 0.7](https://gist.github.com/rztprog/373f3df9ad74242b7bbb8d260e67e5dd)
