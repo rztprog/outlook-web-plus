@@ -11,32 +11,64 @@
     <body>
         <header>
             <img class="icon" src="../icons/mop48.png" title="Outlook Web Plus icon">
-            <h2 class="title">Outlook Web Plus<sup>+</sup></h2>
+            <h2 class="titlePopup">Outlook Web Plus<sup>+</sup></h2>
             <!-- <small>RZTPROG 2023</small> -->
         </header>
-        <!-- Settings -->
-        <fieldset class="settings">
+        <!-- Panel -->
+        <fieldset class="ads">
             <legend>
-                Settings
+                Ads
             </legend>
-
             <div class="labels">
-                <label class="setting">
+                <label class="ad">
                     <input type="checkbox" id="hideleftbannerInput">
-                    <span class="switchLabel">
-                        Hide Left banner
+                    <span>
+                        Hide Left Rail
                     </span>
                 </label>
-                <label class="setting">
+                <label class="ad">
                     <input type="checkbox" id="hidepremiumadInput">
-                    <span class="switchLabel">
-                        Hide Microsoft 365 Premium Ad
+                    <span>
+                        Hide Microsoft 365 Premium
                     </span>
                 </label>
-                <label class="setting">
+                <label class="ad">
                     <input type="checkbox" id="hidetopiconsInput">
-                    <span class="switchLabel">
+                    <span>
                         Hide Meet, Skype, OneNote icons
+                    </span>
+                </label>
+            </div>
+        </fieldset>
+        <fieldset class="extras">
+            <legend>
+                Extras
+            </legend>
+            <div class="labels">
+                <label class="extra" title="Premium Outlook Logo (Top left) + Tab Title">
+                    <input type="checkbox" id="addpremiumlogoInput">
+                    <span>
+                        Outlook+ Logo
+                    </span>
+                </label>
+                <label class="extra">
+                    <input type="checkbox" id="addnumberofemailInput">
+                    <span>
+                        Email counter
+                    </span>
+                    <input type="text" id="numberofemailcolorInput" title="rgb, rgba, hexa, color name">
+                    <div class="numberofemailtypecolorInput" title="rgb, rgba, hexa, color name"></div>
+                </label>
+                <label class="extra" title="Always display the 'Check All Email' button.">
+                    <input type="checkbox" id="addcheckallbuttonInput">
+                    <span>
+                        Check all email button
+                    </span>
+                </label>
+                <label class="extra" title="Delete folder title left padding">
+                    <input type="checkbox" id="addaligntitlefolderInput">
+                    <span>
+                        Align title folder
                     </span>
                 </label>
             </div>
@@ -44,7 +76,7 @@
         <footer>
             <!-- Links -->
             <span>
-                <a href="https://gist.github.com/rztprog/373f3df9ad74242b7bbb8d260e67e5dd" class="github">
+                <a href="https://github.com/rztprog/outlook-web-plus" class="github">
                     <i class="fa-brands fa-github" title="Github"></i>
                 </a>
                 <a href="https://addons.mozilla.org/fr/firefox/addon/outlook-web-plus/" class="rating">
@@ -54,7 +86,7 @@
             <!-- Version -->
             <span>
                 <i class="fa-solid fa-code-compare"></i>
-                <small id="ext-version"></small>
+                <small class="extVersion"></small>
             </span>
         </footer>
         <script src="popup.js"></script>

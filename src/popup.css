@@ -32,6 +32,31 @@ sup {
     vertical-align: super;
 }
 
+footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+#numberofemailcolorInput {
+    width: 60px;
+    height: 12px;
+}
+
+#numberofemailtypecolorInput {
+    width: 60px;
+    height: 16px;
+}
+
+.numberofemailtypecolorInput {
+    margin-left: 1px;
+    width: 30px;
+    height: 12px;
+    background-color: #000;
+    border: 2px solid grey;
+    border-radius: 2px;
+}
+
 .github:hover {
     color: rgb(21, 45, 60);
 }
@@ -67,23 +92,27 @@ sup {
     flex-direction: column;
 }
 
-.setting {
+.ad,
+.extra {
     user-select: none;
+    display: flex;
+    align-items: center;
 }
 
-.settings {
+.ad span,
+.extra span {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.ads,
+.extras {
     padding: 12px;
     border-radius: 4px;
 }
 
-footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
 
-}
-
-#ext-version {
+.extVersion {
     font-family: Blippo, fantasy;
     font-size: 10px;
 }
@@ -98,13 +127,13 @@ footer {
     }
 }
 
-.title {
-    font-size: 24px;
-    font-weight: bold;
-    background: linear-gradient(90deg, rgba(20, 144, 223), #161d1f, rgba(40, 168, 234), rgba(20, 144, 223));
+.titlePopup {
+    background: linear-gradient(90deg, rgba(20, 144, 223), rgba(40, 168, 234), #161d1f, rgba(40, 168, 234), rgba(20, 144, 223));
     background-size: 200% 100%;
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     animation: shiny 5s linear infinite;
+    font-size: 24px;
+    font-weight: bold;
 }
