@@ -18,9 +18,6 @@ Remove ads and improve Outlook's web mailbox.
 - Add/Remove 'Check all email' button
 - Add/Remove Align Title Folder
 
-## Previous Versions (Gist)
-[Version from 0.1 to 0.7](https://gist.github.com/rztprog/373f3df9ad74242b7bbb8d260e67e5dd)
-
 ## Preview
 
 ![Before](https://addons.mozilla.org/user-media/previews/full/289/289012.png)
