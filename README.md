@@ -17,6 +17,7 @@ Remove ads and improve Outlook's web mailbox.
 - Add/Remove Email counter (+ Color Support, RGB, RGBA, Hexa, Color Name)
 - Add/Remove 'Check all email' button
 - Add/Remove Align Title Folder
+- Languages support (English, French, German, Spanish).
 
 ## Preview
 
