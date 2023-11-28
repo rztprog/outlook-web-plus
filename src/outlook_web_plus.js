@@ -270,6 +270,7 @@ const selectAll = (ms = 150) => {
 			selectMessageButtons.forEach(button => {
 				button.addEventListener("click", () => {
 					if (button.getAttribute("aria-checked") === "true") {
+						setTimeout(alignFolderTitle, 100);
 						setTimeout(mailCalculator, 300);
 					}
 				});
@@ -277,6 +278,7 @@ const selectAll = (ms = 150) => {
 
 			selectAllButton.addEventListener("click", () => {
 				if (selectAllButton.getAttribute("aria-checked") === "true") {
+					setTimeout(alignFolderTitle, 100);
 					setTimeout(mailCalculator, 300);
 				}
 			});
@@ -294,6 +296,7 @@ const addButtonClickListeners = (ms = 150) => {
 				button.addEventListener('click', () => {
 					setTimeout(checkAll, 100);
 					setTimeout(selectAll, 100);
+					setTimeout(alignFolderTitle, 100);
 					setTimeout(mailCalculator, 300);
 				});
 			});

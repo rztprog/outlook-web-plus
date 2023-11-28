@@ -1,0 +1,15 @@
+{
+    "extensionName": {"message": "Outlook Web Plus"},
+    "extensionDescription": {"message": "Remove ads and enhance Outlook web mailbox."},
+    
+    "ads_text": {"message": "Ads"},
+    "cfg_hide_left_rail": {"message": "Hide Left Rail"},
+    "cfg_hide_premium_ad": {"message": "Hide Microsoft 365 Premium"},
+    "cfg_hide_top_icons": {"message": "Hide Meet, Skype, OneNote icons"},
+
+    "extras_text": {"message": "Extras"},
+    "cfg_outlook_logo": {"message": "Outlook+ Logo"},
+    "cfg_email_counter": {"message": "Email counter"},
+    "cfg_check_all_emails_button": {"message": "Check all emails button"},
+    "cfg_align_title_folder": {"message": "Align title folder"}
+}

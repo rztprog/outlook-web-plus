@@ -1,0 +1,15 @@
+{
+    "extensionName": {"message": "Outlook Web Plus"},
+    "extensionDescription": {"message": "Elimina los anuncios y mejora el Correo web de Outlook."},
+
+    "ads_text": {"message": "Anuncios"},
+    "cfg_hide_left_rail": {"message": "Ocultar el riel izquierdo"},
+    "cfg_hide_premium_ad": {"message": "Ocultar Microsoft 365 Premium"},
+    "cfg_hide_top_icons": {"message": "Ocultar iconos de Meet, Skype, OneNote"},
+
+    "extras_text": {"message": "Extras"},
+    "cfg_outlook_logo": {"message": "Logo de Outlook+"},
+    "cfg_email_counter": {"message": "Contador de correos electrónicos"},
+    "cfg_check_all_emails_button": {"message": "Botón Seleccionar todos los correos electrónicos"},
+    "cfg_align_title_folder": {"message": "Alinear el título de la carpeta"}
+}

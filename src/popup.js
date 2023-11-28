@@ -43,10 +43,10 @@ const updateInputElement = (id, storageKey) => {
 }
 
 window.onload = function() {
+    // Updater
     updateInputElement("hideleftbannerInput", "hideLeftRail");
     updateInputElement("hidepremiumadInput", "hidePremiumAd");
     updateInputElement("hidetopiconsInput", "hideTopIcons");
-
     colorChecker();
     updateInputElement("addpremiumlogoInput", "premiumLogo");
     updateInputElement("addnumberofemailInput", "addNumberOfEmail");
@@ -54,6 +54,17 @@ window.onload = function() {
     updateInputElement("numberofemailtypecolorInput", "numberOfEmailColor");
     updateInputElement("addcheckallbuttonInput", "checkAllVisible");
     updateInputElement("addaligntitlefolderInput", "alignTitle");
+
+    // Locales
+    document.getElementById("ads_title_text").textContent = chrome.i18n.getMessage("ads_text");
+    document.getElementById("hide_left_rail_text").textContent = chrome.i18n.getMessage("cfg_hide_left_rail");
+    document.getElementById("hide_premium_ad_text").textContent = chrome.i18n.getMessage("cfg_hide_premium_ad");
+    document.getElementById("hide_top_icons_text").textContent = chrome.i18n.getMessage("cfg_hide_top_icons");
+    document.getElementById("extras_title_text").textContent = chrome.i18n.getMessage("extras_text");
+    document.getElementById("outlook_logo_text").textContent = chrome.i18n.getMessage("cfg_outlook_logo");
+    document.getElementById("email_counter_text").textContent = chrome.i18n.getMessage("cfg_email_counter");
+    document.getElementById("check_all_emails_text").textContent = chrome.i18n.getMessage("cfg_check_all_emails_button");
+    document.getElementById("align_title_text").textContent = chrome.i18n.getMessage("cfg_align_title_folder");
 
     let manifestData = chrome.runtime.getManifest();
     document.querySelector(".extVersion").textContent = `v${manifestData.version}`;
