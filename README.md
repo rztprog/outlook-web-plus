@@ -9,15 +9,17 @@ Remove ads and improve Outlook's web mailbox.
 
 ## Features
 
-- Remove the left banner containing quick links and Microsoft 365 content.
-- Remove the Microsoft 365 upgrade advertisement located below your email folders.
-- Remove the Meet, Skype, and OneNote icons from the top toolbar.
+- Add/Remove the left banner containing quick links and Microsoft 365 content.
+- Add/Remove the Microsoft 365 upgrade advertisement located below your email folders.
+- Add/Remove the Meet, Skype, and OneNote icons from the top toolbar.
   
 - Add/Remove Outlook+ Premium Logo
 - Add/Remove Email counter (+ Color Support, RGB, RGBA, Hexa, Color Name)
 - Add/Remove 'Check all email' button
 - Add/Remove Align Title Folder
+
 - Languages support (English, French, German, Spanish).
+- Change background theme url (All images extension such as jpg, png, gif etc.)
 
 ## Preview
 
@@ -34,7 +36,7 @@ or add the Add-on temporarily:
 1. Download the project
 2. In Firefox browser go to the debugging page by typing in url <b>[about:debugging#/runtime/this-firefox](about:debugging#/runtime/this-firefox)</b>
 4. Click on <b>Load Temporary Add-on...</b>
-5. Select a file (eg. 'manifest.json' file) or entier .zip file inside of downloaded git project. Or you can ZIP contents of the project and select it instead.
+5. Select entier .zip file inside of downloaded git project (outlook_web_plus_vx.x.x.zip)
 
 ## License
 
@@ -43,3 +45,4 @@ or add the Add-on temporarily:
 ## Thanks to
 
 - [Vulpelo](https://github.com/Vulpelo) for [Hide Youtube-Shorts](https://github.com/Vulpelo/hide-youtube-shorts) source code
+- [Wolf](https://addons.mozilla.org/fr/firefox/user/12495535/) for inspiration to creating a better extension of [Outlook Web Enhancement](https://addons.mozilla.org/fr/firefox/addon/outlook-web-enhancement/)
