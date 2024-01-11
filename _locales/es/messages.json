@@ -11,5 +11,6 @@
     "cfg_outlook_logo": {"message": "Logo de Outlook+"},
     "cfg_email_counter": {"message": "Contador de correos electrónicos"},
     "cfg_check_all_emails_button": {"message": "Botón Seleccionar todos los correos electrónicos"},
-    "cfg_align_title_folder": {"message": "Alinear el título de la carpeta"}
+    "cfg_align_title_folder": {"message": "Alinear el título de la carpeta"},
+    "cfg_custom_background": {"message": "Tema de fondo URL"}
 }

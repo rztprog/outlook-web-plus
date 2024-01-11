@@ -7,12 +7,14 @@ let hidePremiumAd = true;
 let hideTopIcons = true;
 
 // Extras
-let premiumLogo = true;
+let premiumLogo = false;
 let currentTitle = document.title;
 let addNumberOfEmail = true;
 let numberOfEmailColor = "green";
 let checkAllVisible = true;
 let alignTitle = true;
+let addcustomBackground = false;
+let customBackground = "https://images.unsplash.com/photo-1553949285-bdcb31ec5cba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 const start = () => {
 	const leftRail = document.getElementById("LeftRail");
@@ -32,6 +34,7 @@ const start = () => {
 			checkAll();
 			alignFolderTitle();
 			addButtonClickListeners();
+			backgroundChanger();
 		})
 	}
 }
@@ -74,6 +77,14 @@ chrome.storage.onChanged.addListener(function (changes) {
 			alignTitle = changes.alignTitle.newValue;
 			alignFolderTitle(0);
 			break;
+		case "addcustomBackground":
+			addcustomBackground = changes.addcustomBackground.newValue;
+			backgroundChanger(0);
+			break;
+		case "customBackground":
+			customBackground = changes.customBackground.newValue;
+			backgroundChanger(0);
+			break;
 	}
 })
 
@@ -85,6 +96,8 @@ const loadVariables = (value) => {
 	addNumberOfEmail = value.addNumberOfEmail === undefined ? addNumberOfEmail : value.addNumberOfEmail;
 	checkAllVisible = value.checkAllVisible === undefined ? checkAllVisible : value.checkAllVisible;
 	alignTitle = value.alignTitle === undefined ? alignTitle : value.alignTitle;
+	addcustomBackground = value.addcustomBackground === undefined ? addcustomBackground : value.addcustomBackground;
+	customBackground = value.customBackground === undefined ? customBackground : value.customBackground;
 
 	if (typeof value.numberOfEmailColor === 'string') {
 		numberOfEmailColor = value.numberOfEmailColor;
@@ -98,7 +111,9 @@ const loadVariables = (value) => {
 		addNumberOfEmail,
 		numberOfEmailColor,
 		checkAllVisible,
-		alignTitle
+		alignTitle,
+		addcustomBackground,
+		customBackground
 	});
 }
 
@@ -217,7 +232,7 @@ const cleanTopIcons = (ms = 100) => {
 		const children = document.getElementById("headerButtonsRegionId").children;
 		if (children.length >= 7) {
 			document.getElementById("owaMeetNowButton_container").style.display = hideTopIcons ? "none" : "block";
-			document.getElementById("skype_container").style.display = hideTopIcons ? "none" : "block";
+			document.getElementById("teams_container").style.display = hideTopIcons ? "none" : "block";
 			document.getElementById("owaNoteFeedButton_container").style.display = hideTopIcons ? "none" : "block";
 			clearInterval(timer);
 		}
@@ -304,4 +319,20 @@ const addButtonClickListeners = (ms = 150) => {
 		}
 	}
 	const timer = setInterval(findButtons, ms);
+}
+
+const backgroundChanger = (ms = 150) => {
+	const findBackground = () => {
+		const backgroundNav = document.querySelector('.o365sx-navbar');
+		if (backgroundNav && addcustomBackground) {
+			backgroundNav.style.backgroundImage = `url("${customBackground}")`;
+			backgroundNav.style.backgroundPosition = 'center';
+			backgroundNav.style.backgroundRepeatX = 'repeat';
+		}
+		if (!addcustomBackground) {
+			backgroundNav.style.backgroundImage = "";
+		}
+		clearInterval(timer);
+	}
+	const timer = setInterval(findBackground, ms);
 }

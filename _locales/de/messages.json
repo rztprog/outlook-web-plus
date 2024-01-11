@@ -11,5 +11,6 @@
     "cfg_outlook_logo": {"message": "Outlook+ Logo"},
     "cfg_email_counter": {"message": "E-Mail-Zähler"},
     "cfg_check_all_emails_button": {"message": "Alle E-Mails überprüfen"},
-    "cfg_align_title_folder": {"message": "Titelordner ausrichten"}
+    "cfg_align_title_folder": {"message": "Titelordner ausrichten"},
+    "cfg_custom_background": {"message": "Hintergrundthema URL"}
 }

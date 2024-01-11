@@ -54,6 +54,8 @@ window.onload = function() {
     updateInputElement("numberofemailtypecolorInput", "numberOfEmailColor");
     updateInputElement("addcheckallbuttonInput", "checkAllVisible");
     updateInputElement("addaligntitlefolderInput", "alignTitle");
+    updateInputElement("addcustomBackgroundInput", "addcustomBackground");
+    updateInputElement("customBackgroundInput", "customBackground");
 
     // Locales
     document.getElementById("ads_title_text").textContent = chrome.i18n.getMessage("ads_text");
@@ -65,6 +67,7 @@ window.onload = function() {
     document.getElementById("email_counter_text").textContent = chrome.i18n.getMessage("cfg_email_counter");
     document.getElementById("check_all_emails_text").textContent = chrome.i18n.getMessage("cfg_check_all_emails_button");
     document.getElementById("align_title_text").textContent = chrome.i18n.getMessage("cfg_align_title_folder");
+    document.getElementById("custom_background_text").textContent = chrome.i18n.getMessage("cfg_custom_background");
 
     let manifestData = chrome.runtime.getManifest();
     document.querySelector(".extVersion").textContent = `v${manifestData.version}`;
