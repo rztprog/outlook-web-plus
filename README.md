@@ -18,7 +18,7 @@ Remove ads and improve Outlook's web mailbox.
 - Add/Remove 'Check all email' button
 - Add/Remove Align Title Folder
 - Add/Remove Support and rating button
-- Add/Remove background theme url (All images extension such as jpg, png, gif etc.)
+- Add/Remove background theme url (All images extension such as jpg, png, gif etc. and please choose a 1920 width for better look)
 - Add/Remove transparency topbar background
 
 - Languages support (English, French, German, Spanish).
