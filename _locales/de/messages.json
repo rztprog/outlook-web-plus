@@ -12,5 +12,7 @@
     "cfg_email_counter": {"message": "E-Mail-Zähler"},
     "cfg_check_all_emails_button": {"message": "Alle E-Mails überprüfen"},
     "cfg_align_title_folder": {"message": "Titelordner ausrichten"},
-    "cfg_custom_background": {"message": "Hintergrundthema URL"}
+    "cfg_custom_background": {"message": "Hintergrundthema URL"},
+    "cfg_transparency_topbar": {"message": "Transparenz der topbar"},
+    "cfg_support_rate_topbar": {"message": "Support- und Bewertungsschaltfläche"}
 }

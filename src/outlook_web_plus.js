@@ -13,8 +13,10 @@ let addNumberOfEmail = true;
 let numberOfEmailColor = "green";
 let checkAllVisible = true;
 let alignTitle = true;
-let addcustomBackground = false;
-let customBackground = "https://images.unsplash.com/photo-1553949285-bdcb31ec5cba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+let addcustomBackground = true;
+let customBackground = "https://wallpapercave.com/wp/wp2757894.gif";
+let topbarTransparency = true;
+let supportAndRateButton = true;
 
 const start = () => {
 	const leftRail = document.getElementById("LeftRail");
@@ -35,6 +37,8 @@ const start = () => {
 			alignFolderTitle();
 			addButtonClickListeners();
 			backgroundChanger();
+			topbarTransparencyChanger();
+			addSupportAndRate();
 		})
 	}
 }
@@ -85,6 +89,14 @@ chrome.storage.onChanged.addListener(function (changes) {
 			customBackground = changes.customBackground.newValue;
 			backgroundChanger(0);
 			break;
+		case "topbarTransparency":
+			topbarTransparency = changes.topbarTransparency.newValue;
+			topbarTransparencyChanger(0);
+			break;
+		case "supportAndRateButton":
+			supportAndRateButton = changes.supportAndRateButton.newValue;
+			addSupportAndRate(0);
+			break;
 	}
 })
 
@@ -98,6 +110,8 @@ const loadVariables = (value) => {
 	alignTitle = value.alignTitle === undefined ? alignTitle : value.alignTitle;
 	addcustomBackground = value.addcustomBackground === undefined ? addcustomBackground : value.addcustomBackground;
 	customBackground = value.customBackground === undefined ? customBackground : value.customBackground;
+	topbarTransparency = value.topbarTransparency === undefined ? topbarTransparency : value.topbarTransparency;
+	supportAndRateButton = value.supportAndRateButton === undefined ? supportAndRateButton : value.supportAndRateButton;
 
 	if (typeof value.numberOfEmailColor === 'string') {
 		numberOfEmailColor = value.numberOfEmailColor;
@@ -113,7 +127,9 @@ const loadVariables = (value) => {
 		checkAllVisible,
 		alignTitle,
 		addcustomBackground,
-		customBackground
+		customBackground,
+		topbarTransparency,
+		supportAndRateButton
 	});
 }
 
@@ -218,7 +234,6 @@ const cleanPremiumAd = (ms = 100) => {
 const alignFolderTitle = (ms = 100) => {
 	const findFolderTitle = () => {
 		const folderTitle = document.querySelector(".IG8s8");
-
 		if (folderTitle) {
 			alignTitle ? folderTitle.style.paddingLeft = '0px' : folderTitle.style.paddingLeft = '16px';
 			clearInterval(timer);
@@ -266,7 +281,6 @@ const rootFolder = () => {
 const checkAll = (ms = 100) => {
 	const findSelectAllButton = () => {
 		const selectAllButton = document.querySelector('.rk2CU');
-
 		if (selectAllButton) {
 			checkAllVisible ? selectAllButton.style.visibility = "visible" : selectAllButton.style.visibility = "hidden";
 			clearInterval(timer);
@@ -335,4 +349,75 @@ const backgroundChanger = (ms = 150) => {
 		clearInterval(timer);
 	}
 	const timer = setInterval(findBackground, ms);
+}
+
+const topbarTransparencyChanger = (ms = 150) => {
+	const findTopbarElements = () => {
+		const outlookButton = document.querySelector('.o365sx-appName');
+		const o365Button = document.querySelectorAll('.o365sx-button');
+		const teamsButton = document.querySelector('.nUPgy');
+		if (outlookButton && o365Button && teamsButton) {
+			const computedStyles = getComputedStyle(outlookButton);
+			const currentColor = computedStyles.backgroundColor;
+
+			const convertToRGBA = (color, alpha) => {
+				const matchHEXA = color.match(/#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})/i);
+				const matchRGB = color.match(/rgb\((\d+), (\d+), (\d+)\)/i);
+				const matchRGBA = color.match(/rgba\((\d+), (\d+), (\d+), (0(\.\d+)?|1(\.0)?)\)/i);
+				if (matchRGB) {
+					return `rgba(${matchRGB[1]}, ${matchRGB[2]}, ${matchRGB[3]}, ${alpha})`;
+				} else if (matchRGBA) {
+					return `rgba(${matchRGBA[1]}, ${matchRGBA[2]}, ${matchRGBA[3]}, ${alpha})`
+				} else if (matchHEXA) {
+					return `rgba(${parseInt(matchHEXA[1], 16)}, ${parseInt(matchHEXA[2], 16)}, ${parseInt(matchHEXA[3], 16)}, ${alpha})`;
+				} else {
+					return
+				}
+			};
+
+			outlookButton.style.backgroundColor = convertToRGBA(currentColor, topbarTransparency ? 0 : 0.8);
+			teamsButton.style.backgroundColor = convertToRGBA(currentColor, topbarTransparency ? 0 : 0.8);
+
+			o365Button.forEach(topbarbutton => {
+				topbarbutton.style.backgroundColor = convertToRGBA(currentColor, topbarTransparency ? 0 : 0.8);
+			});
+			clearInterval(timer);
+		}
+	}
+	const timer = setInterval(findTopbarElements, ms);
+}
+
+const addSupportAndRate = (ms = 100) => {
+	const findTopbar = () => {
+		const topBarButtons = document.getElementById('headerButtonsRegionId');
+		if (topBarButtons) {
+			if (supportAndRateButton && topBarButtons.firstChild.id == "owaMeetNowButton_container") {
+				const newDiv = document.createElement('div');
+				newDiv.id = 'rateAndSupport_container';
+				newDiv.classList.add('M3pcB5evSAtYMozck1WU7A==');
+				newDiv.style.display = 'block';
+			
+				const link = document.createElement('a');
+				link.style.width = '48px';
+				link.style.height = '48px';
+				link.style.display = 'flex';
+				link.style.justifyContent = 'center';
+				link.style.alignItems = 'center';
+				link.href = 'https://addons.mozilla.org/fr/firefox/addon/outlook-web-plus/';
+				link.target = '_blank';
+
+				const imgIcone = document.createElement('img');
+				imgIcone.src = 'https://raw.githubusercontent.com/rztprog/outlook-web-plus/main/icons/stars_rating.png'
+			
+				link.appendChild(imgIcone);
+				newDiv.appendChild(link);
+			
+				topBarButtons.insertBefore(newDiv, topBarButtons.firstChild);
+			} else {
+				supportAndRateButton ? topBarButtons.firstChild.style.display = 'block' : topBarButtons.firstChild.style.display = 'none'
+			}
+			clearInterval(timer);
+		}
+	}
+	const timer = setInterval(findTopbar, ms);
 }

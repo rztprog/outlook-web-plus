@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<!--
-    Inspired by 'Hide Youtube-Shorts' source-code (https://github.com/Vulpelo/hide-youtube-shorts) - by Vulpelo
--->
 <html>
     <head>
         <meta charset="utf-8">
@@ -12,7 +9,6 @@
         <header>
             <img class="icon" src="../icons/mop48.png" title="Outlook Web Plus icon">
             <h2 class="titlePopup">Outlook Web Plus<sup>+</sup></h2>
-            <!-- <small>RZTPROG 2023</small> -->
         </header>
         <!-- Panel -->
         <fieldset class="ads">
@@ -35,7 +31,7 @@
                 <label class="ad">
                     <input type="checkbox" id="hidetopiconsInput">
                     <span id="hide_top_icons_text">
-                        Hide Meet, Skype, OneNote icons
+                        Hide Meet, Teams, OneNote icons
                     </span>
                 </label>
             </div>
@@ -71,12 +67,24 @@
                         Align title folder
                     </span>
                 </label>
-                <label class="extra" title="Add a custom background theme">
+                <label class="extra" title="Add a custom background theme (1920 width for better look)">
                     <input type="checkbox" id="addcustomBackgroundInput">
                     <span id="custom_background_text">
                         Background Theme URL
                     </span>
                     <input type="text" id="customBackgroundInput" title="url image">
+                </label>
+                <label class="extra" title="Add transparency to topbar elements">
+                    <input type="checkbox" id="addtransparencytobarInput">
+                    <span id="transparency_topbar_text">
+                        Topbar transparency
+                    </span>
+                </label>
+                <label class="extra" title="Please rate and support if you like !">
+                    <input type="checkbox" id="addsupportandratebuttonInput">
+                    <span id="support_rate_topbar_text">
+                        Support and rating Button
+                    </span>
                 </label>
             </div>
         </fieldset>

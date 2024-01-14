@@ -56,6 +56,8 @@ window.onload = function() {
     updateInputElement("addaligntitlefolderInput", "alignTitle");
     updateInputElement("addcustomBackgroundInput", "addcustomBackground");
     updateInputElement("customBackgroundInput", "customBackground");
+    updateInputElement("addtransparencytobarInput", "topbarTransparency");
+    updateInputElement("addsupportandratebuttonInput", "supportAndRateButton");
 
     // Locales
     document.getElementById("ads_title_text").textContent = chrome.i18n.getMessage("ads_text");
@@ -68,6 +70,8 @@ window.onload = function() {
     document.getElementById("check_all_emails_text").textContent = chrome.i18n.getMessage("cfg_check_all_emails_button");
     document.getElementById("align_title_text").textContent = chrome.i18n.getMessage("cfg_align_title_folder");
     document.getElementById("custom_background_text").textContent = chrome.i18n.getMessage("cfg_custom_background");
+    document.getElementById("transparency_topbar_text").textContent = chrome.i18n.getMessage("cfg_transparency_topbar");
+    document.getElementById("support_rate_topbar_text").textContent = chrome.i18n.getMessage("cfg_support_rate_topbar");
 
     let manifestData = chrome.runtime.getManifest();
     document.querySelector(".extVersion").textContent = `v${manifestData.version}`;

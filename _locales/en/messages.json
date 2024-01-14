@@ -12,5 +12,7 @@
     "cfg_email_counter": {"message": "Email counter"},
     "cfg_check_all_emails_button": {"message": "Check all emails button"},
     "cfg_align_title_folder": {"message": "Align title folder"},
-    "cfg_custom_background": {"message": "Background Theme URL"}
+    "cfg_custom_background": {"message": "Background Theme URL"},
+    "cfg_transparency_topbar": {"message": "Topbar transparency"},
+    "cfg_support_rate_topbar": {"message": "Support and rating Button"}
 }
