@@ -5,8 +5,10 @@ let startTimer = null;
 let hideLeftRail = true;
 let hidePremiumAd = true;
 let hideTopIcons = true;
+let hideFirstemailAd = true;
 
 // Extras
+let emailsText = "emails";
 let premiumLogo = false;
 let currentTitle = document.title;
 let addNumberOfEmail = true;
@@ -18,29 +20,30 @@ let customBackground = "https://wallpapercave.com/wp/wp2757894.gif";
 let topbarTransparency = true;
 let supportAndRateButton = true;
 
-const start = () => {
-	const leftRail = document.getElementById("LeftRail");
-	if (leftRail !== null) {
-		chrome.storage.local.get(null, function (value) {
-			loadVariables(value);
-			clearInterval(startTimer);
-			cleanLeftRail();
-			rootFolder();
-			updatePremiumLogo();
-			titleListener();
-			cleanMailPub();
-			cleanPremiumAd();
-			cleanTopIcons();
-			mailCalculator();
-			selectAll();
-			checkAll();
-			alignFolderTitle();
-			addButtonClickListeners();
-			backgroundChanger();
-			topbarTransparencyChanger();
-			addSupportAndRate();
-		})
-	}
+const start = async () => {
+    if (document.getElementById("o365header") !== null) {
+        const value = await new Promise(resolve => {
+            chrome.storage.local.get(null, value => resolve(value));
+        });
+        loadVariables(value);
+        clearInterval(startTimer);
+        await Promise.all([
+            cleanLeftRail(),
+            updatePremiumLogo(),
+            titleListener(),
+            cleanFirstmailAd(),
+            cleanPremiumAd(),
+            cleanTopIcons(),
+            mailCalculator(),
+            selectAll(),
+            checkAll(),
+            alignFolderTitle(),
+            addButtonClickListeners(),
+            backgroundChanger(),
+            topbarTransparencyChanger(),
+            addSupportAndRate()
+        ]);
+    }
 }
 
 startTimer = setInterval(start, 200);
@@ -50,9 +53,9 @@ chrome.storage.onChanged.addListener(function (changes) {
 	switch (updatedElement) {
 	  	case "hideLeftRail":
 			hideLeftRail = changes.hideLeftRail.newValue;
-			cleanLeftRail();
+			cleanLeftRail(0);
 			break;
-	 	 case "hidePremiumAd":
+		case "hidePremiumAd":
 			hidePremiumAd = changes.hidePremiumAd.newValue;
 			cleanPremiumAd(0);
 			break;
@@ -63,7 +66,11 @@ chrome.storage.onChanged.addListener(function (changes) {
 		case "premiumLogo":
 			premiumLogo = changes.premiumLogo.newValue;
 			updatePremiumLogo(0);
-            titleListener();
+            titleListener(0);
+			break;
+		case "hideFirstemailAd":
+			hideFirstemailAd = changes.hideFirstemailAd.newValue;
+			cleanFirstmailAd(0);
 			break;
 		case "addNumberOfEmail":
 			addNumberOfEmail = changes.addNumberOfEmail.newValue;
@@ -101,6 +108,7 @@ chrome.storage.onChanged.addListener(function (changes) {
 })
 
 const loadVariables = (value) => {
+	hideFirstemailAd = value.hideFirstemailAd === undefined ? hideFirstemailAd : value.hideFirstemailAd;
 	hideLeftRail = value.hideLeftRail === undefined ? hideLeftRail : value.hideLeftRail;
 	hidePremiumAd = value.hidePremiumAd === undefined ? hidePremiumAd : value.hidePremiumAd;
 	hideTopIcons = value.hideTopIcons === undefined ? hideTopIcons : value.hideTopIcons;
@@ -120,6 +128,7 @@ const loadVariables = (value) => {
 	chrome.storage.local.set({
 		hideLeftRail,
 		hidePremiumAd,
+		hideFirstemailAd,
 		hideTopIcons,
 		premiumLogo,
 		addNumberOfEmail,
@@ -201,13 +210,14 @@ const mailCalculator = (ms = 150) => {
 			const titleFolderText = titleFolder.innerText;
 			const firstMail = document.querySelector('.hcptT');
 			const numberOfEmails = firstMail ? firstMail.getAttribute('aria-setsize') : 0;
-			const regex = /\s\(\d+ mails\)/;
+			// const regex = /\s\(\d+ emails\)/; // Old Way
+			const regex = new RegExp(`\\s\\(${numberOfEmails} ${emailsText}\\)`);
 
 			// Prevent duplication
 			if (regex.test(titleFolderText)) {
-				titleFolder.innerHTML = titleFolderText.replace(regex, `<b class="mailColor" style="color: ${numberOfEmailColor}; display: ${addNumberOfEmail ? 'inline' : 'none'}"> (${numberOfEmails} mails)</b>`);
+				titleFolder.innerHTML = titleFolderText.replace(regex, `<b class="mailColor" style="color: ${numberOfEmailColor}; display: ${addNumberOfEmail ? 'inline' : 'none'}"> (${numberOfEmails} ${emailsText})</b>`);
 			} else {			    
-				titleFolder.innerHTML = `${titleFolderText} <b class="mailColor" style="color: ${numberOfEmailColor}; display: ${addNumberOfEmail ? 'inline' : 'none'}"> (${numberOfEmails} mails)</b>`;
+				titleFolder.innerHTML = `${titleFolderText} <b class="mailColor" style="color: ${numberOfEmailColor}; display: ${addNumberOfEmail ? 'inline' : 'none'}"> (${numberOfEmails} ${emailsText})</b>`;
 			}
 			clearInterval(timer);
 		}
@@ -255,27 +265,25 @@ const cleanTopIcons = (ms = 100) => {
 	const timer = setInterval(findTopBar, ms);
 }
 
-const cleanMailPub = (ms = 100) => {
+const cleanFirstmailAd = (ms = 100) => {
 	let counter = 0;
-	const findTopMail = () => {
-		const topMail = document.querySelector(".cJ3F3");
-		if (topMail) {
-			topMail.style.display = "none";
+	const findFirstmailAd = () => {
+		const FirstmailAd = document.getElementById("OwaContainer");
+		if (FirstmailAd) {
+			const titleRemove = document.querySelector('i[title="Remove"]');
+			FirstmailAd.style.display = hideFirstemailAd ? "none" : "block";
+			if (titleRemove) {
+				setTimeout(titleRemove.click(), 200); // Force close first email ad
+			}
 			clearInterval(timer);
 		}
 
-		if (counter > 20) {
+		if (counter >= 60) {
 			clearInterval(timer);
 		}
 		counter++;
 	}
-	const timer = setInterval(findTopMail, ms);
-}
-
-const rootFolder = () => {
-	document.querySelector(".wk4Sg").addEventListener("click", function() {
-		cleanMailPub();
-	});
+	const timer = setInterval(findFirstmailAd, ms);
 }
 
 const checkAll = (ms = 100) => {
@@ -299,16 +307,16 @@ const selectAll = (ms = 150) => {
 			selectMessageButtons.forEach(button => {
 				button.addEventListener("click", () => {
 					if (button.getAttribute("aria-checked") === "true") {
-						setTimeout(alignFolderTitle, 100);
-						setTimeout(mailCalculator, 300);
+						setTimeout(alignFolderTitle, 150);
+						setTimeout(mailCalculator, 150);
 					}
 				});
 			});
 
 			selectAllButton.addEventListener("click", () => {
 				if (selectAllButton.getAttribute("aria-checked") === "true") {
-					setTimeout(alignFolderTitle, 100);
-					setTimeout(mailCalculator, 300);
+					setTimeout(alignFolderTitle, 150);
+					setTimeout(mailCalculator, 150);
 				}
 			});
 			clearInterval(timer);
@@ -325,8 +333,13 @@ const addButtonClickListeners = (ms = 150) => {
 				button.addEventListener('click', () => {
 					setTimeout(checkAll, 100);
 					setTimeout(selectAll, 100);
-					setTimeout(alignFolderTitle, 100);
+					setTimeout(alignFolderTitle, 300);
 					setTimeout(mailCalculator, 300);
+					setTimeout(cleanFirstmailAd, 0);
+					const titleRemove = document.querySelector('i[title="Remove"]');
+					if (titleRemove) {
+						setTimeout(titleRemove.click(), 200); // Force close first email ad
+					}
 				});
 			});
 			clearInterval(timer);
@@ -351,16 +364,18 @@ const backgroundChanger = (ms = 150) => {
 	const timer = setInterval(findBackground, ms);
 }
 
-const topbarTransparencyChanger = (ms = 150) => {
+const topbarTransparencyChanger = (ms = 50) => {
 	const findTopbarElements = () => {
 		const outlookButton = document.querySelector('.o365sx-appName');
 		const o365Button = document.querySelectorAll('.o365sx-button');
 		const teamsButton = document.querySelector('.nUPgy');
-		if (outlookButton && o365Button && teamsButton) {
-			const computedStyles = getComputedStyle(outlookButton);
-			const currentColor = computedStyles.backgroundColor;
 
-			const convertToRGBA = (color, alpha) => {
+		if (outlookButton && o365Button.length == 12 && teamsButton) {
+			const computedStyles = getComputedStyle(outlookButton);
+			const currentBackgroundColor = computedStyles.backgroundColor;
+			const transparencyConverter = convertToRGBA(currentBackgroundColor, topbarTransparency ? 0 : 0.8);
+
+			function convertToRGBA(color, alpha) {
 				const matchHEXA = color.match(/#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})/i);
 				const matchRGB = color.match(/rgb\((\d+), (\d+), (\d+)\)/i);
 				const matchRGBA = color.match(/rgba\((\d+), (\d+), (\d+), (0(\.\d+)?|1(\.0)?)\)/i);
@@ -375,12 +390,13 @@ const topbarTransparencyChanger = (ms = 150) => {
 				}
 			};
 
-			outlookButton.style.backgroundColor = convertToRGBA(currentColor, topbarTransparency ? 0 : 0.8);
-			teamsButton.style.backgroundColor = convertToRGBA(currentColor, topbarTransparency ? 0 : 0.8);
+			outlookButton.style.backgroundColor = transparencyConverter;
+			teamsButton.style.backgroundColor = transparencyConverter;
 
 			o365Button.forEach(topbarbutton => {
-				topbarbutton.style.backgroundColor = convertToRGBA(currentColor, topbarTransparency ? 0 : 0.8);
+				topbarbutton.style.backgroundColor = transparencyConverter;
 			});
+
 			clearInterval(timer);
 		}
 	}
@@ -403,7 +419,7 @@ const addSupportAndRate = (ms = 100) => {
 				link.style.display = 'flex';
 				link.style.justifyContent = 'center';
 				link.style.alignItems = 'center';
-				link.href = 'https://addons.mozilla.org/fr/firefox/addon/outlook-web-plus/';
+				link.href = 'https://addons.mozilla.org/fr/firefox/addon/outlook-web-plus/reviews/';
 				link.target = '_blank';
 
 				const imgIcone = document.createElement('img');

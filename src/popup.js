@@ -47,6 +47,7 @@ window.onload = function() {
     updateInputElement("hideleftbannerInput", "hideLeftRail");
     updateInputElement("hidepremiumadInput", "hidePremiumAd");
     updateInputElement("hidetopiconsInput", "hideTopIcons");
+    updateInputElement("hidefirstemailadInput", "hideFirstemailAd");                        
     colorChecker();
     updateInputElement("addpremiumlogoInput", "premiumLogo");
     updateInputElement("addnumberofemailInput", "addNumberOfEmail");
@@ -72,6 +73,10 @@ window.onload = function() {
     document.getElementById("custom_background_text").textContent = chrome.i18n.getMessage("cfg_custom_background");
     document.getElementById("transparency_topbar_text").textContent = chrome.i18n.getMessage("cfg_transparency_topbar");
     document.getElementById("support_rate_topbar_text").textContent = chrome.i18n.getMessage("cfg_support_rate_topbar");
+    document.getElementById("topButtonsCalendar_text").textContent = chrome.i18n.getMessage("cfg_open_calendar");
+    document.getElementById("topButtonsOutlook_text").textContent = chrome.i18n.getMessage("cfg_open_outlook");
+    document.getElementById("hide_firstemail_ad_text").textContent = chrome.i18n.getMessage("cfg_hide_firstemail_ad");
+
 
     let manifestData = chrome.runtime.getManifest();
     document.querySelector(".extVersion").textContent = `v${manifestData.version}`;

@@ -4,7 +4,8 @@
 
     "ads_text": {"message": "Anuncios"},
     "cfg_hide_left_rail": {"message": "Ocultar el riel izquierdo"},
-    "cfg_hide_premium_ad": {"message": "Ocultar Microsoft 365 Premium"},
+    "cfg_hide_premium_ad": {"message": "Ocultar el anuncio de Microsoft 365 Premium"},
+    "cfg_hide_firstemail_ad": {"message": "Ocultar el anuncio del primer correo electrónico"},
     "cfg_hide_top_icons": {"message": "Ocultar iconos de Meet, Skype, OneNote"},
 
     "extras_text": {"message": "Extras"},
@@ -14,5 +15,8 @@
     "cfg_align_title_folder": {"message": "Alinear el título de la carpeta"},
     "cfg_custom_background": {"message": "Tema de fondo URL"},
     "cfg_transparency_topbar": {"message": "Transparencia de la topbar"},
-    "cfg_support_rate_topbar": {"message": "Botón de soporte y calificación"}
+    "cfg_support_rate_topbar": {"message": "Botón de soporte y calificación"},
+
+    "cfg_open_outlook": {"message": "Abrir Outlook"},
+    "cfg_open_calendar": {"message": "Abrir Calendario"}
 }
