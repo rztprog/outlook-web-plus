@@ -18,5 +18,7 @@
     "cfg_support_rate_topbar": {"message": "Bouton support et notation"},
 
     "cfg_open_outlook": {"message": "Ouvrir Outlook"},
-    "cfg_open_calendar": {"message": "Ouvrir Calendrier"}
+    "cfg_open_calendar": {"message": "Ouvrir Calendrier"},
+
+    "cfg_new_version": {"message": "Nouvelle version disponible"}
 }
