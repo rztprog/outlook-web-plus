@@ -175,7 +175,7 @@ footer {
 .linkNewVersion {
     margin-top: 8px;
     font-family: roboto;
-    display: flex;
+    display: none;
     padding: 15px 0px;
     justify-content: center;
     align-items: center;

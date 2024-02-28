@@ -4,6 +4,7 @@ function scrapeAddonVersion(actualVersion, translatedMessage) {
     .then(data => {
         const newVersion = data.results[0]["current_version"]["version"]
         if (newVersion !== actualVersion) {
+            document.querySelector(".linkNewVersion").style.display = "flex"
             document.querySelector(".newVersion").textContent = `🔔 ${translatedMessage} v${newVersion}`
         } else {
             document.querySelector(".linkNewVersion").style.display = "none"
