@@ -20,7 +20,6 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 16px;
 }
 
 a {
@@ -55,10 +54,6 @@ footer {
     align-items: center;
 }
 
-.topButtonsCalendar {
-    margin-left: 5px;
-}
-
 .topButtonsCalendar,
 .topButtonsOutlook {
     display: flex;
@@ -66,17 +61,12 @@ footer {
     font-size: 14px;
 }
 
-.topButtonsCalendar:hover,
-.topButtonsOutlook:hover {
-    color:white;
-}
-
 .svgCalendar,
 .svgOutlook {
     margin-left: 5px;
 }
 
-/* getcssscan.com button */
+/* Getcssscan.com inspired button */
 .button-29 {
     align-items: center;
     appearance: none;
@@ -92,9 +82,8 @@ footer {
     justify-content: center;
     line-height: 1;
     overflow: hidden;
-    /* padding: 5px 5px; */
-    transition: box-shadow .15s,transform .15s;
-    margin-bottom: 8px;
+    transition: box-shadow .20s,transform .20s;
+    margin: 8px 2px;
 }
 
 .button-29:hover {
@@ -178,9 +167,37 @@ footer {
     transition: border 0.4s ease-in-out;
 }
 
-.extVersion {
-    font-family: Blippo, fantasy;
+.extVersion{
+    font-family: Arial;
     font-size: 10px;
+}
+
+.linkNewVersion {
+    margin-top: 8px;
+    font-family: roboto;
+    display: flex;
+    padding: 15px 0px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 4px;
+    outline: 0;
+    background-color: #FF4742;
+    border: 1px solid #FF4742;
+    box-sizing: border-box;
+    color: white;
+}
+
+.linkNewVersion:hover,
+.linkNewVersion:active {
+  background-color: initial;
+  background-position: 0 0;
+  border: 1px solid #FF4742;
+  color: #FF4742;
+}
+
+.linkNewVersion:active {
+    opacity: .5;
 }
 
 /* Shiny Effet on title */

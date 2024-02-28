@@ -9,6 +9,9 @@
         <header>
             <img class="icon" src="../icons/mop48.png" title="Outlook Web Plus icon">
             <h2 class="titlePopup">Outlook Web Plus<sup>+</sup></h2>
+            <a class="linkNewVersion" href="https://addons.mozilla.org/fr/firefox/addon/outlook-web-plus/">
+                <span class="newVersion"></span>
+            </a>
         </header>
         <!-- Panel -->
         <div class="topButtons">
@@ -117,9 +120,12 @@
             <!-- Version -->
             <span>
                 <i class="fa-solid fa-code-compare"></i>
-                <small class="extVersion"></small>
+                <span class="extVersion">1.1.6</span>
             </span>
         </footer>
         <script src="popup.js"></script>
+        <script>
+            document.querySelector('.linkNewVersion').style.display = document.querySelector('.newVersion').textContent.trim() === '' ? 'none' : '';
+        </script>
     </body>
 </html>

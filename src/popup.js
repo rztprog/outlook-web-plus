@@ -1,3 +1,19 @@
+function scrapeAddonVersion(actualVersion, translatedMessage) {
+    fetch('https://addons.mozilla.org/api/v5/addons/search/?app=firefox&appversion=123.0&author=17444166&page=1&type=extension')
+    .then(response => response.json()) 
+    .then(data => {
+        const newVersion = data.results[0]["current_version"]["version"]
+        if (newVersion !== actualVersion) {
+            document.querySelector(".newVersion").textContent = `🔔 ${translatedMessage} v${newVersion}`
+        } else {
+            document.querySelector(".linkNewVersion").style.display = "none"
+        }
+    })
+    .catch(error => {
+        console.error('Version not found : ', error);
+    });
+}
+
 const colorChecker = (ms = 100) => {
     const findColorInput = () => {
         const textInput = document.getElementById("numberofemailcolorInput");
@@ -77,7 +93,12 @@ window.onload = function() {
     document.getElementById("topButtonsOutlook_text").textContent = chrome.i18n.getMessage("cfg_open_outlook");
     document.getElementById("hide_firstemail_ad_text").textContent = chrome.i18n.getMessage("cfg_hide_firstemail_ad");
 
-
+    // Version
     let manifestData = chrome.runtime.getManifest();
     document.querySelector(".extVersion").textContent = `v${manifestData.version}`;
+
+    scrapeAddonVersion(manifestData.version, chrome.i18n.getMessage("cfg_new_version"));
+    setInterval(() => {
+        scrapeAddonVersion(manifestData.version, chrome.i18n.getMessage("cfg_new_version"));
+    }, 12 * 60 * 60 * 1000); // Check every 12 hours
 };
