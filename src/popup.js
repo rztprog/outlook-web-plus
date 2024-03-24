@@ -2,9 +2,12 @@ function scrapeAddonVersion(actualVersion, translatedMessage) {
     fetch('https://addons.mozilla.org/api/v5/addons/search/?app=firefox&appversion=123.0&author=17444166&page=1&type=extension')
     .then(response => response.json()) 
     .then(data => {
-        const newVersion = data.results[0]["current_version"]["version"]
+        const addonData = data.results[0]["current_version"]
+        const newVersion = addonData["version"]
+        const newVersionUrl = addonData["file"]["url"]
         if (newVersion !== actualVersion) {
             document.querySelector(".linkNewVersion").style.display = "flex"
+            document.querySelector(".linkNewVersion").href = newVersionUrl
             document.querySelector(".newVersion").textContent = `🔔 ${translatedMessage} v${newVersion}`
         } else {
             document.querySelector(".linkNewVersion").style.display = "none"

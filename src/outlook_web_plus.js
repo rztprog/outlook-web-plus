@@ -205,19 +205,19 @@ const updatePremiumLogo = (ms = 100) => {
 
 const mailCalculator = (ms = 150) => {
 	const findFolder = () => {
-		const titleFolder = document.querySelector('.jXaVF');
-		if (titleFolder) {
-			const titleFolderText = titleFolder.innerText;
-			const firstMail = document.querySelector('.hcptT');
+		const folderTitle = document.querySelector('.jXaVF');
+		if (folderTitle) {
+			const folderTitleText = folderTitle.innerText;
+			const firstMail = document.querySelector('.jGG6V');
 			const numberOfEmails = firstMail ? firstMail.getAttribute('aria-setsize') : 0;
 			// const regex = /\s\(\d+ emails\)/; // Old Way
 			const regex = new RegExp(`\\s\\(${numberOfEmails} ${emailsText}\\)`);
 
 			// Prevent duplication
-			if (regex.test(titleFolderText)) {
-				titleFolder.innerHTML = titleFolderText.replace(regex, `<b class="mailColor" style="color: ${numberOfEmailColor}; display: ${addNumberOfEmail ? 'inline' : 'none'}"> (${numberOfEmails} ${emailsText})</b>`);
+			if (regex.test(folderTitleText)) {
+				folderTitle.innerHTML = folderTitleText.replace(regex, `<b class="mailColor" style="color: ${numberOfEmailColor}; display: ${addNumberOfEmail ? 'inline' : 'none'}"> (${numberOfEmails} ${emailsText})</b>`);
 			} else {			    
-				titleFolder.innerHTML = `${titleFolderText} <b class="mailColor" style="color: ${numberOfEmailColor}; display: ${addNumberOfEmail ? 'inline' : 'none'}"> (${numberOfEmails} ${emailsText})</b>`;
+				folderTitle.innerHTML = `${folderTitleText} <b class="mailColor" style="color: ${numberOfEmailColor}; display: ${addNumberOfEmail ? 'inline' : 'none'}"> (${numberOfEmails} ${emailsText})</b>`;
 			}
 			clearInterval(timer);
 		}
