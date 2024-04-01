@@ -1,0 +1,23 @@
+{
+    "extensionName": {"message": "Outlook Web Plus"},
+    "extensionDescription": {"message": "Удаление рекламы и улучшение почтового ящика Outlook веб."},
+
+    "ads_text": {"message": "Реклама"},
+    "cfg_hide_left_rail": {"message": "Скрыть левую панель"},
+    "cfg_hide_top_icons": {"message": "Скрыть значки Meet, Skype, OneNote"},
+    "cfg_hide_firstemail_ad": {"message": "Скрыть рекламу первого письма"},
+
+    "extras_text": {"message": "Дополнительно"},
+    "cfg_outlook_logo": {"message": "Логотип Outlook+"},
+    "cfg_email_counter": {"message": "Счетчик электронной почты"},
+    "cfg_check_all_emails_button": {"message": "Кнопка \"Проверить все письма\""},
+    "cfg_align_title_folder": {"message": "Выравнивание заголовка папки"},
+    "cfg_custom_background": {"message": "URL настраиваемой темы фона"},
+    "cfg_transparency_topbar": {"message": "Прозрачность верхней панели"},
+    "cfg_support_rate_topbar": {"message": "Кнопка поддержки и оценки"},
+
+    "cfg_open_outlook": {"message": "Открыть Outlook"},
+    "cfg_open_calendar": {"message": "Открыть календарь"},
+
+    "cfg_new_version": {"message": "Доступна новая версия"}
+}

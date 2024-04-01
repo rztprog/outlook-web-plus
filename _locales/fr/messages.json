@@ -4,7 +4,6 @@
 
     "ads_text": {"message": "Publicités"},
     "cfg_hide_left_rail": {"message": "Masquer le volet gauche"},
-    "cfg_hide_premium_ad": {"message": "Masquer la publicité Microsoft 365 Premium"},
     "cfg_hide_firstemail_ad": {"message": "Masquer le premier e-mail publicité"},
     "cfg_hide_top_icons": {"message": "Masquer les icônes Meet, Skype, OneNote"},
 

@@ -3,7 +3,6 @@ let startTimer = null;
 
 // Ads
 let hideLeftRail = true;
-let hidePremiumAd = true;
 let hideTopIcons = true;
 let hideFirstemailAd = true;
 
@@ -32,7 +31,6 @@ const start = async () => {
             updatePremiumLogo(),
             titleListener(),
             cleanFirstmailAd(),
-            cleanPremiumAd(),
             cleanTopIcons(),
             mailCalculator(),
             selectAll(),
@@ -54,10 +52,6 @@ chrome.storage.onChanged.addListener(function (changes) {
 	  	case "hideLeftRail":
 			hideLeftRail = changes.hideLeftRail.newValue;
 			cleanLeftRail(0);
-			break;
-		case "hidePremiumAd":
-			hidePremiumAd = changes.hidePremiumAd.newValue;
-			cleanPremiumAd(0);
 			break;
 	  	case "hideTopIcons":
 			hideTopIcons = changes.hideTopIcons.newValue;
@@ -110,7 +104,6 @@ chrome.storage.onChanged.addListener(function (changes) {
 const loadVariables = (value) => {
 	hideFirstemailAd = value.hideFirstemailAd === undefined ? hideFirstemailAd : value.hideFirstemailAd;
 	hideLeftRail = value.hideLeftRail === undefined ? hideLeftRail : value.hideLeftRail;
-	hidePremiumAd = value.hidePremiumAd === undefined ? hidePremiumAd : value.hidePremiumAd;
 	hideTopIcons = value.hideTopIcons === undefined ? hideTopIcons : value.hideTopIcons;
 	premiumLogo = value.premiumLogo === undefined ? premiumLogo : value.premiumLogo;
 	addNumberOfEmail = value.addNumberOfEmail === undefined ? addNumberOfEmail : value.addNumberOfEmail;
@@ -127,7 +120,6 @@ const loadVariables = (value) => {
 
 	chrome.storage.local.set({
 		hideLeftRail,
-		hidePremiumAd,
 		hideFirstemailAd,
 		hideTopIcons,
 		premiumLogo,
@@ -204,20 +196,40 @@ const updatePremiumLogo = (ms = 100) => {
 }
 
 const mailCalculator = (ms = 150) => {
+	let counter = 0;
+
 	const findFolder = () => {
 		const folderTitle = document.querySelector('.jXaVF');
-		if (folderTitle) {
-			const folderTitleText = folderTitle.innerText;
-			const firstMail = document.querySelector('.jGG6V');
-			const numberOfEmails = firstMail ? firstMail.getAttribute('aria-setsize') : 0;
-			// const regex = /\s\(\d+ emails\)/; // Old Way
-			const regex = new RegExp(`\\s\\(${numberOfEmails} ${emailsText}\\)`);
+		const folderTitleText = folderTitle.innerText;
+		const emailsDetector = document.querySelectorAll('.jGG6V');
+		const emptyFolder = document.getElementById('EmptyState_MainMessage')
+
+		if (folderTitle && (emailsDetector.length > 1)){
+			const firstEmail = emailsDetector[0].getAttribute('aria-posinset') == 1 ? emailsDetector[0] : emailsDetector[1];
+
+			if (firstEmail) {
+				const numberOfEmails = firstEmail ? firstEmail.getAttribute('aria-setsize') : 0;
+				// const regex = /\s\(\d+ emails\)/; // Old Way
+				const regex = new RegExp(`\\s\\(${numberOfEmails} ${emailsText}\\)`);
+	
+				// Prevent duplication
+				if (regex.test(folderTitleText)) {
+					folderTitle.innerHTML = folderTitleText.replace(regex, `<b class="mailColor" style="color: ${numberOfEmailColor}; display: ${addNumberOfEmail ? 'inline' : 'none'}"> (${numberOfEmails} ${emailsText})</b>`);
+				} else {			    
+					folderTitle.innerHTML = `${folderTitleText} <b class="mailColor" style="color: ${numberOfEmailColor}; display: ${addNumberOfEmail ? 'inline' : 'none'}"> (${numberOfEmails} ${emailsText})</b>`;
+				}
+				clearInterval(timer);
+			}
+		}
+
+		if (counter > 100 || emptyFolder) {
+			const regex = new RegExp(`\\s\\(${0} ${emailsText}\\)`);
 
 			// Prevent duplication
 			if (regex.test(folderTitleText)) {
-				folderTitle.innerHTML = folderTitleText.replace(regex, `<b class="mailColor" style="color: ${numberOfEmailColor}; display: ${addNumberOfEmail ? 'inline' : 'none'}"> (${numberOfEmails} ${emailsText})</b>`);
+				folderTitle.innerHTML = folderTitleText.replace(regex, `<b class="mailColor" style="color: ${numberOfEmailColor}; display: ${addNumberOfEmail ? 'inline' : 'none'}"> (${0} ${emailsText})</b>`);
 			} else {			    
-				folderTitle.innerHTML = `${folderTitleText} <b class="mailColor" style="color: ${numberOfEmailColor}; display: ${addNumberOfEmail ? 'inline' : 'none'}"> (${numberOfEmails} ${emailsText})</b>`;
+				folderTitle.innerHTML = `${folderTitleText} <b class="mailColor" style="color: ${numberOfEmailColor}; display: ${addNumberOfEmail ? 'inline' : 'none'}"> (${0} ${emailsText})</b>`;
 			}
 			clearInterval(timer);
 		}
@@ -228,17 +240,6 @@ const mailCalculator = (ms = 150) => {
 const cleanLeftRail = () => {
     const leftRail = document.getElementById("LeftRail");
     leftRail.style.display = hideLeftRail ? "none" : "block";
-}
-
-const cleanPremiumAd = (ms = 100) => {
-	const findPremium = () => {
-		const premiumAd = document.querySelector(".Ogqyq");
-		if (premiumAd) {
-			premiumAd.style.display = hidePremiumAd ? "none" : "block";
-			clearInterval(timer);
-		}
-	}
-	const timer = setInterval(findPremium, ms);
 }
 
 const alignFolderTitle = (ms = 100) => {

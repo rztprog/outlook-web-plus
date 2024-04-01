@@ -5,6 +5,7 @@ function scrapeAddonVersion(actualVersion, translatedMessage) {
         const addonData = data.results[0]["current_version"]
         const newVersion = addonData["version"]
         const newVersionUrl = addonData["file"]["url"]
+
         if (newVersion !== actualVersion) {
             document.querySelector(".linkNewVersion").style.display = "flex"
             document.querySelector(".linkNewVersion").href = newVersionUrl
@@ -65,7 +66,6 @@ const updateInputElement = (id, storageKey) => {
 window.onload = function() {
     // Updater
     updateInputElement("hideleftbannerInput", "hideLeftRail");
-    updateInputElement("hidepremiumadInput", "hidePremiumAd");
     updateInputElement("hidetopiconsInput", "hideTopIcons");
     updateInputElement("hidefirstemailadInput", "hideFirstemailAd");                        
     colorChecker();
@@ -83,7 +83,6 @@ window.onload = function() {
     // Locales
     document.getElementById("ads_title_text").textContent = chrome.i18n.getMessage("ads_text");
     document.getElementById("hide_left_rail_text").textContent = chrome.i18n.getMessage("cfg_hide_left_rail");
-    document.getElementById("hide_premium_ad_text").textContent = chrome.i18n.getMessage("cfg_hide_premium_ad");
     document.getElementById("hide_top_icons_text").textContent = chrome.i18n.getMessage("cfg_hide_top_icons");
     document.getElementById("extras_title_text").textContent = chrome.i18n.getMessage("extras_text");
     document.getElementById("outlook_logo_text").textContent = chrome.i18n.getMessage("cfg_outlook_logo");
@@ -104,5 +103,5 @@ window.onload = function() {
     scrapeAddonVersion(manifestData.version, chrome.i18n.getMessage("cfg_new_version"));
     setInterval(() => {
         scrapeAddonVersion(manifestData.version, chrome.i18n.getMessage("cfg_new_version"));
-    }, 12 * 60 * 60 * 1000); // Check every 12 hours
+    }, 12 * 60 * 60 * 1000); // Check every 12 hours if a new version is available if browser is already open
 };
