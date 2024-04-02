@@ -2,26 +2,30 @@
 ![Outlook web plus icon](https://addons.mozilla.org/user-media/addon_icons/2789/2789916-64.png?modified=2ae24ebb)
 # Outlook Web Plus
 
-![Mozilla Add-on Users](https://img.shields.io/amo/users/outlook-web-plus?logo=Firefox&label=Firefox%20Users)
-![Mozilla Add-on Version](https://img.shields.io/amo/v/outlook-web-plus?logo=Firefox&label=Version)
+![Mozilla Add-on Users](https://img.shields.io/amo/users/outlook-web-plus?style=flat&logo=firefox&label=Firefox%20Users)
+![Mozilla Add-on Version](https://img.shields.io/amo/v/outlook-web-plus?style=flat&logo=firefox&label=Version)
+![Mozilla Add-on Downloads](https://img.shields.io/amo/dw/outlook-web-plus?logo=firefox&label=Downloads)
+
 
 Remove ads and improve Outlook's web mailbox.
 
 ## Features
+- Notification when a new version is available.
+- Two large buttons for direct access to Outlook or the calendar.
+- Languages support (English, French, German, Spanish, Russian).
+
+<br />
 
 - Add/Remove the left banner containing quick links and Microsoft 365 content.
-- Add/Remove the Microsoft 365 upgrade advertisement located below your email folders.
 - Add/Remove the Meet, Skype, and OneNote icons from the top toolbar.
-  
 - Add/Remove Outlook+ Premium Logo
 - Add/Remove Email counter (+ Color Support, RGB, RGBA, Hexa, Color Name)
 - Add/Remove 'Check all email' button
 - Add/Remove Align Title Folder
 - Add/Remove Support and rating button
-- Add/Remove background theme url (All images extension such as jpg, png, gif etc. and please choose a 1920 width for better look)
-- Add/Remove transparency topbar background
+- Add/Remove Background topbar theme url (All images extension such as jpg, png, gif etc. and please choose a 1920 width for better look)
+- Add/Remove Transparency topbar background
 
-- Languages support (English, French, German, Spanish).
 
 ## Preview
 
