@@ -13,7 +13,7 @@ Remove ads and improve Outlook's web mailbox.
 - Notification when a new version is available.
 - Two large buttons for direct access to Outlook or the calendar.
 - Languages support (English, French, German, Spanish, Russian).
-- Autohide first email AD (Please use uBlock Origin for better performance)
+- Autohide first email AD (Please use [uBlock Origin](https://github.com/gorhill/uBlock) extension for better performance)
 
 <br />
 
