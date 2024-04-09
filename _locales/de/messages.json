@@ -5,7 +5,7 @@
     "ads_text": {"message": "Werbung"},
     "cfg_hide_left_rail": {"message": "Linkes Menü ausblenden"},
     "cfg_hide_firstemail_ad": {"message": "Erste E-Mail-Anzeige ausblenden"},
-    "cfg_hide_top_icons": {"message": "Symbole für Meet, Skype und OneNote ausblenden"},
+    "cfg_hide_top_icons": {"message": "Verstecke die Icons Meet, Teams, OneNote"},
 
     "extras_text": {"message": "Extras"},
     "cfg_outlook_logo": {"message": "Outlook+ Logo"},

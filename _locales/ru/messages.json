@@ -4,8 +4,8 @@
 
     "ads_text": {"message": "Реклама"},
     "cfg_hide_left_rail": {"message": "Скрыть левую панель"},
-    "cfg_hide_top_icons": {"message": "Скрыть значки Meet, Skype, OneNote"},
     "cfg_hide_firstemail_ad": {"message": "Скрыть рекламу первого письма"},
+    "cfg_hide_top_icons": {"message": "Скрыть значки Meet, Teams, OneNote"},
 
     "extras_text": {"message": "Дополнительно"},
     "cfg_outlook_logo": {"message": "Логотип Outlook+"},

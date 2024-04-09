@@ -5,7 +5,7 @@
     "ads_text": {"message": "Publicités"},
     "cfg_hide_left_rail": {"message": "Masquer le volet gauche"},
     "cfg_hide_firstemail_ad": {"message": "Masquer le premier e-mail publicité"},
-    "cfg_hide_top_icons": {"message": "Masquer les icônes Meet, Skype, OneNote"},
+    "cfg_hide_top_icons": {"message": "Masquer les icônes Meet, Teams, OneNote"},
 
     "extras_text": {"message": "Extras"},
     "cfg_outlook_logo": {"message": "Logo Outlook+"},

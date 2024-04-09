@@ -5,13 +5,14 @@ function scrapeAddonVersion(actualVersion, translatedMessage) {
         const addonData = data.results[0]["current_version"]
         const newVersion = addonData["version"]
         const newVersionUrl = addonData["file"]["url"]
+        const divNewVersion = document.querySelector(".linkNewVersion");
 
         if (newVersion !== actualVersion) {
-            document.querySelector(".linkNewVersion").style.display = "flex"
-            document.querySelector(".linkNewVersion").href = newVersionUrl
+            divNewVersion.style.display = "flex"
+            divNewVersion.href = newVersionUrl
             document.querySelector(".newVersion").textContent = `🔔 ${translatedMessage} v${newVersion}`
         } else {
-            document.querySelector(".linkNewVersion").style.display = "none"
+            divNewVersion.style.display = "none"
         }
     })
     .catch(error => {
@@ -64,7 +65,7 @@ const updateInputElement = (id, storageKey) => {
 }
 
 window.onload = function() {
-    // Updater
+    // Updaters
     updateInputElement("hideleftbannerInput", "hideLeftRail");
     updateInputElement("hidetopiconsInput", "hideTopIcons");
     updateInputElement("hidefirstemailadInput", "hideFirstemailAd");                        

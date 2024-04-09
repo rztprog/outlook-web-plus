@@ -4,8 +4,8 @@
     
     "ads_text": {"message": "Ads"},
     "cfg_hide_left_rail": {"message": "Hide Left Rail"},
-    "cfg_hide_top_icons": {"message": "Hide Meet, Skype, OneNote icons"},
     "cfg_hide_firstemail_ad": {"message": "Hide First Email Ad"},
+    "cfg_hide_top_icons": {"message": "Hide Meet, Teams, OneNote icons"},
 
     "extras_text": {"message": "Extras"},
     "cfg_outlook_logo": {"message": "Outlook+ Logo"},

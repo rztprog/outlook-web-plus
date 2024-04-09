@@ -26,6 +26,7 @@ const start = async () => {
         });
         loadVariables(value);
         clearInterval(startTimer);
+
         await Promise.all([
             cleanLeftRail(),
             updatePremiumLogo(),
@@ -33,13 +34,15 @@ const start = async () => {
             cleanFirstmailAd(),
             cleanTopIcons(),
             mailCalculator(),
+			handleResizeStarter(),
+			deleteButtonListener(),
             selectAll(),
             checkAll(),
             alignFolderTitle(),
             addButtonClickListeners(),
             backgroundChanger(),
             topbarTransparencyChanger(),
-            addSupportAndRate()
+            addSupportAndRate(),
         ]);
     }
 }
@@ -134,6 +137,51 @@ const loadVariables = (value) => {
 	});
 }
 
+const handleResizeStarter = () => {
+    let executedOnce1050 = false;
+    let executedOnce770 = false; 
+    let executedOnce542 = false; 
+
+    const handleResize = () => {
+        let windowWidth = window.innerWidth;
+
+		// Breakpoint 1050
+        if (windowWidth <= 1050 && !executedOnce1050) {
+            topbarTransparencyChanger();
+            cleanLeftRail();
+            cleanTopIcons();
+            executedOnce1050 = true;
+        } else if (windowWidth > 1050 && executedOnce1050) {  
+			topbarTransparencyChanger();
+            cleanLeftRail();
+            cleanTopIcons();
+            executedOnce1050 = false;
+        }
+
+		// Breakpoint 770
+        if (windowWidth <= 770 && !executedOnce770) {
+            alignFolderTitle();
+            mailCalculator();
+            executedOnce770 = true;
+        } else if (windowWidth > 770 && executedOnce770) { 
+			alignFolderTitle();
+            mailCalculator();
+            executedOnce770 = false;
+        }
+
+		// Breakpoint 542
+        if (windowWidth >= 542 && !executedOnce542) {
+            addButtonClickListeners();
+            executedOnce542 = true;
+        } else if (windowWidth < 542 && executedOnce542) {
+			addButtonClickListeners();
+            executedOnce542 = false;
+        }
+    }
+
+    window.addEventListener('resize', handleResize);
+}
+
 const titleListener = (ms = 100) => {
 	const calendarButton = document.getElementById("owaTimePanelBtn_container");
 
@@ -195,23 +243,57 @@ const updatePremiumLogo = (ms = 100) => {
 	const timer = setInterval(findAppName, ms);
 }
 
+const deleteButtonListener = (ms = 100, deleteAMessage = false) => {
+	let counter = 0;
+
+	const findDeleteButton = () => {
+		counter++;
+		const deleteButton = document.querySelectorAll('.splitPrimaryButton')[1];
+
+		deleteButton.addEventListener('click', () => {
+			const okButton = document.getElementById('ok-1');
+		
+			if (okButton) {
+				okButton.addEventListener('click', () => {
+					mailCalculator();
+				});
+			}
+
+			if (deleteAMessage) {
+				setTimeout(mailCalculator, 300);
+				setTimeout(alignFolderTitle, 300);
+			}
+
+			clearInterval(timer);
+		});
+
+		if (counter >= 100) {
+			clearInterval(timer);
+		}
+	}
+
+	const timer = setInterval(findDeleteButton, ms);
+}
+
 const mailCalculator = (ms = 150) => {
 	let counter = 0;
 
 	const findFolder = () => {
+		counter++;
+
 		const folderTitle = document.querySelector('.jXaVF');
-		const folderTitleText = folderTitle.innerText;
+		const folderTitleText = folderTitle ? folderTitle.innerText : null;
 		const emailsDetector = document.querySelectorAll('.jGG6V');
 		const emptyFolder = document.getElementById('EmptyState_MainMessage')
 
-		if (folderTitle && (emailsDetector.length > 1)){
+		if (folderTitle && (emailsDetector.length > 0)){
 			const firstEmail = emailsDetector[0].getAttribute('aria-posinset') == 1 ? emailsDetector[0] : emailsDetector[1];
 
 			if (firstEmail) {
 				const numberOfEmails = firstEmail ? firstEmail.getAttribute('aria-setsize') : 0;
 				// const regex = /\s\(\d+ emails\)/; // Old Way
 				const regex = new RegExp(`\\s\\(${numberOfEmails} ${emailsText}\\)`);
-	
+
 				// Prevent duplication
 				if (regex.test(folderTitleText)) {
 					folderTitle.innerHTML = folderTitleText.replace(regex, `<b class="mailColor" style="color: ${numberOfEmailColor}; display: ${addNumberOfEmail ? 'inline' : 'none'}"> (${numberOfEmails} ${emailsText})</b>`);
@@ -267,6 +349,7 @@ const cleanTopIcons = (ms = 100) => {
 }
 
 const cleanFirstmailAd = (ms = 100) => {
+	// Please use uBlock Origin Extension in addition for a better performance
 	let counter = 0;
 	const findFirstmailAd = () => {
 		const FirstmailAd = document.getElementById("OwaContainer");
@@ -288,36 +371,38 @@ const cleanFirstmailAd = (ms = 100) => {
 }
 
 const checkAll = (ms = 100) => {
-	const findSelectAllButton = () => {
-		const selectAllButton = document.querySelector('.rk2CU');
-		if (selectAllButton) {
-			checkAllVisible ? selectAllButton.style.visibility = "visible" : selectAllButton.style.visibility = "hidden";
+	const findSelectAllMessagesButton = () => {
+		const selectAllMessagesButton = document.querySelector('.rk2CU');
+		if (selectAllMessagesButton) {
+			checkAllVisible ? selectAllMessagesButton.style.visibility = "visible" : selectAllMessagesButton.style.visibility = "hidden";
 			clearInterval(timer);
 		}
 	}
-	const timer = setInterval(findSelectAllButton, ms);
+	const timer = setInterval(findSelectAllMessagesButton, ms);
 }
 
 const selectAll = (ms = 150) => {
 	// Reload mailCalculator When click on "select all messages" or "select a message"
 	const findButton = () => {
-		const selectAllButton = document.querySelector('.rk2CU');
-		const selectMessageButtons = document.querySelectorAll('.d1dnN');
+		const selectAllMessagesButton = document.querySelector('.rk2CU');
+		const selectMessageButtons = document.querySelectorAll('.Q9I6M');
 
-		if (selectAllButton && selectMessageButtons) {
+		if (selectAllMessagesButton && selectMessageButtons) {
 			selectMessageButtons.forEach(button => {
 				button.addEventListener("click", () => {
 					if (button.getAttribute("aria-checked") === "true") {
-						setTimeout(alignFolderTitle, 150);
-						setTimeout(mailCalculator, 150);
+						setTimeout(mailCalculator, 0);
+						setTimeout(alignFolderTitle, 0);
 					}
+
+					setTimeout(deleteButtonListener(150, true), 0);
 				});
 			});
 
-			selectAllButton.addEventListener("click", () => {
-				if (selectAllButton.getAttribute("aria-checked") === "true") {
-					setTimeout(alignFolderTitle, 150);
-					setTimeout(mailCalculator, 150);
+			selectAllMessagesButton.addEventListener("click", () => {
+				if (selectAllMessagesButton.getAttribute("aria-checked") === "true") {
+					setTimeout(alignFolderTitle, 0);
+					setTimeout(mailCalculator, 0);
 				}
 			});
 			clearInterval(timer);
@@ -334,8 +419,8 @@ const addButtonClickListeners = (ms = 150) => {
 				button.addEventListener('click', () => {
 					setTimeout(checkAll, 100);
 					setTimeout(selectAll, 100);
-					setTimeout(alignFolderTitle, 300);
-					setTimeout(mailCalculator, 300);
+					setTimeout(alignFolderTitle, 0);
+					setTimeout(mailCalculator, 0);
 					setTimeout(cleanFirstmailAd, 0);
 					const titleRemove = document.querySelector('i[title="Remove"]');
 					if (titleRemove) {
