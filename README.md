@@ -1,13 +1,20 @@
+<div align="center">
+  <sub>
+    <img src="https://addons.mozilla.org/user-media/addon_icons/2789/2789916-64.png?modified=2ae24ebb">
+  </sub>
+  <h1>Outlook Web Plus</h1>
+</div>
 
-![Outlook web plus icon](https://addons.mozilla.org/user-media/addon_icons/2789/2789916-64.png?modified=2ae24ebb)
-# Outlook Web Plus
+<h3 align="center">
+  <img src="https://img.shields.io/amo/users/outlook-web-plus?style=flat&logo=firefox&label=Firefox%20Users">
+  <img src="https://img.shields.io/amo/v/outlook-web-plus?style=flat&logo=firefox&label=Version">
+  <img src="https://img.shields.io/amo/dw/outlook-web-plus?logo=firefox&label=Downloads">
+  <h3 align="center">Remove ads and improve Outlook's web mailbox.</h3>
+</h3>
 
-![Mozilla Add-on Users](https://img.shields.io/amo/users/outlook-web-plus?style=flat&logo=firefox&label=Firefox%20Users)
-![Mozilla Add-on Version](https://img.shields.io/amo/v/outlook-web-plus?style=flat&logo=firefox&label=Version)
-![Mozilla Add-on Downloads](https://img.shields.io/amo/dw/outlook-web-plus?logo=firefox&label=Downloads)
-
-
-Remove ads and improve Outlook's web mailbox.
+<p align="center">
+  <a href="https://addons.mozilla.org/fr/firefox/addon/outlook-web-plus/"><img src="https://blog.mozilla.org/addons/files/2015/11/get-the-addon.png"/></a>
+</p>
 
 ## Features
 - Notification when a new version is available.
