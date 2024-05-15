@@ -18,22 +18,22 @@
 </p>
 
 ## Features
-- Notification when a new version is available.
-- Two large buttons for direct access to Outlook or the calendar.
-- Languages support (English, French, German, Spanish, Russian).
-- Autohide first email AD (Please use [uBlock Origin](https://github.com/gorhill/uBlock) extension for better performance)
+- ✅ Notification when a new version is available.
+- ✅ Two large buttons for direct access to Outlook or the calendar.
+- ✅ Languages support (English, French, German, Spanish, Russian).
+- ✅ Autohide first email AD (Please use [uBlock Origin](https://github.com/gorhill/uBlock) extension for better performance)
 
 <br />
 
-- Add/Remove the left banner containing quick links and Microsoft 365 content.
-- Add/Remove the Meet, Skype, and OneNote icons from the top toolbar.
-- Add/Remove Outlook+ Premium Logo
-- Add/Remove Email counter (+ Color Support, RGB, RGBA, Hexa, Color Name)
-- Add/Remove 'Check all email' button
-- Add/Remove Align Title Folder
-- Add/Remove Support and rating button
-- Add/Remove Background topbar theme url (All images extension such as jpg, png, gif etc. and please choose a 1920 width for better look)
-- Add/Remove Transparency topbar background
+- ✅ Add/Remove the left banner containing quick links and Microsoft 365 content.
+- ✅ Add/Remove the Meet, Skype, and OneNote icons from the top toolbar.
+- ✅ Add/Remove Outlook+ Premium Logo
+- ✅ Add/Remove Email counter (+ Color Support, RGB, RGBA, Hexa, Color Name)
+- ✅ Add/Remove 'Check all email' button
+- ✅ Add/Remove Align Title Folder
+- ✅ Add/Remove Support and rating button
+- ✅ Add/Remove Background topbar theme url (All images extension such as jpg, png, gif etc. and please choose a 1920 width for better look)
+- ✅ Add/Remove Transparency topbar background
 
 
 ## Preview
