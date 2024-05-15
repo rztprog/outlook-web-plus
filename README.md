@@ -53,6 +53,17 @@ or add the Add-on temporarily:
 4. Click on <b>Load Temporary Add-on...</b>
 5. Select entier .zip file inside of downloaded git project (outlook_web_plus_vx.x.x.zip)
 
+### Google Chrome
+
+Install from [Chrome web store](https://chrome.google.com/webstore/detail/outlook-web-plus) webpage
+
+or add the Add-on manually:
+1. Download the folder [google_unpacked](https://github.com/rztprog/outlook-web-plus/tree/main/google_unpacked)
+3. In Chrome browser go to the Extensions page (or type in url <b>[chrome://extensions/](chrome://extensions/)</b>)
+4. Enable the <b>Developer Mode</b>
+5. Click the <b>Load unpacked</b> button
+6. Select the directory "google_unpacked" of downloaded git project.
+
 ## License
 
 [BSD 2-Clause License](https://github.com/rztprog/outlook-web-plus/blob/main/LICENSE)
