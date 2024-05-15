@@ -1,0 +1,23 @@
+{
+    "extensionName": {"message": "Outlook Web Plus"},
+    "extensionDescription": {"message": "Supprimez les publicités et améliorez la Boîte mail web d'Outlook."},
+
+    "ads_text": {"message": "Publicités"},
+    "cfg_hide_left_rail": {"message": "Masquer le volet gauche"},
+    "cfg_hide_firstemail_ad": {"message": "Masquer le premier e-mail publicité"},
+    "cfg_hide_top_icons": {"message": "Masquer les icônes Meet, Teams, OneNote"},
+
+    "extras_text": {"message": "Extras"},
+    "cfg_outlook_logo": {"message": "Logo Outlook+"},
+    "cfg_email_counter": {"message": "Compteur d'e-mails"},
+    "cfg_check_all_emails_button": {"message": "Bouton selectionner emails"},
+    "cfg_align_title_folder": {"message": "Aligner le titre du dossier"},
+    "cfg_custom_background": {"message": "Thème d'arrière-plan URL"},
+    "cfg_transparency_topbar": {"message": "Transparence de la topbar"},
+    "cfg_support_rate_topbar": {"message": "Bouton support et notation"},
+
+    "cfg_open_outlook": {"message": "Ouvrir Outlook"},
+    "cfg_open_calendar": {"message": "Ouvrir Calendrier"},
+
+    "cfg_new_version": {"message": "Nouvelle version disponible"}
+}

@@ -1,0 +1,23 @@
+{
+    "extensionName": {"message": "Outlook Web Plus"},
+    "extensionDescription": {"message": "Entfernen Sie Werbung und verbessern Sie Ihr Outlook-Web-Postfach."},
+
+    "ads_text": {"message": "Werbung"},
+    "cfg_hide_left_rail": {"message": "Linkes Menü ausblenden"},
+    "cfg_hide_firstemail_ad": {"message": "Erste E-Mail-Anzeige ausblenden"},
+    "cfg_hide_top_icons": {"message": "Verstecke die Icons Meet, Teams, OneNote"},
+
+    "extras_text": {"message": "Extras"},
+    "cfg_outlook_logo": {"message": "Outlook+ Logo"},
+    "cfg_email_counter": {"message": "E-Mail-Zähler"},
+    "cfg_check_all_emails_button": {"message": "Alle E-Mails überprüfen"},
+    "cfg_align_title_folder": {"message": "Ordner-Titel ausrichten"},
+    "cfg_custom_background": {"message": "Hintergrundthema URL"},
+    "cfg_transparency_topbar": {"message": "Transparenz der topbar"},
+    "cfg_support_rate_topbar": {"message": "Support- und Bewertungsschaltfläche"},
+
+    "cfg_open_outlook": {"message": "Outlook öffnen"},
+    "cfg_open_calendar": {"message": "Kalender öffnen"},
+
+    "cfg_new_version": {"message": "Neue Version verfügbar"}
+}
