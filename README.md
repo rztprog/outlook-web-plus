@@ -14,6 +14,7 @@
 
 <p align="center">
   <a href="https://addons.mozilla.org/fr/firefox/addon/outlook-web-plus/"><img src="https://blog.mozilla.org/addons/files/2015/11/get-the-addon.png"/></a>
+  <a href="https://chromewebstore.google.com/detail/outlook-web-plus/xxx"><img src="https://github.com/rztprog/broll-youtube-thumbnail/assets/45171753/ad685787-0ce4-4167-87da-e1b26e6aacf3"/></a>
 </p>
 
 ## Features
