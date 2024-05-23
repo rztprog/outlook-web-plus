@@ -6,15 +6,18 @@
 </div>
 
 <h3 align="center">
-  <img src="https://img.shields.io/amo/users/outlook-web-plus?style=flat&logo=firefox&label=Firefox%20Users">
-  <img src="https://img.shields.io/amo/v/outlook-web-plus?style=flat&logo=firefox&label=Version">
-  <img src="https://img.shields.io/amo/dw/outlook-web-plus?logo=firefox&label=Downloads">
-  <h3 align="center">Remove ads and improve Outlook's web mailbox.</h3>
+  <img src="https://img.shields.io/amo/users/outlook-web-plus?style=flat&logo=firefoxbrowser&label=Firefox%20Users">
+  <img src="https://img.shields.io/chrome-web-store/users/jgomcpcjiffhcbmodgkekfenhhmjphpn?logo=googlechrome&label=Chrome%20Users&color=blue">
+  <img src="https://img.shields.io/amo/v/outlook-web-plus?style=flat&logo=firefox&label=Version&color=#006d32">
 </h3>
 
+<h3 align="center">
+ <p>Remove ads and improve Outlook's web mailbox.</p>
+<h3>
+
 <p align="center">
-  <a href="https://addons.mozilla.org/fr/firefox/addon/outlook-web-plus/"><img src="https://blog.mozilla.org/addons/files/2015/11/get-the-addon.png"/></a>
-  <a href="https://chromewebstore.google.com/detail/outlook-web-plus/xxx"><img src="https://github.com/rztprog/broll-youtube-thumbnail/assets/45171753/ad685787-0ce4-4167-87da-e1b26e6aacf3"/></a>
+  <a href="https://addons.mozilla.org/fr/firefox/addon/outlook-web-plus/"><img src="https://user-images.githubusercontent.com/585534/107280546-7b9b2a00-6a26-11eb-8f9f-f95932f4bfec.png"/></a>
+  <a href="https://chromewebstore.google.com/detail/outlook-web-plus/jgomcpcjiffhcbmodgkekfenhhmjphpn"><img src="https://user-images.githubusercontent.com/585534/107280622-91a8ea80-6a26-11eb-8d07-77c548b28665.png"/></a>
 </p>
 
 ## Features
