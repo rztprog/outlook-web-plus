@@ -37,13 +37,13 @@ footer {
     margin-top: 5px;
 }
 
-#numberofemailcolorInput,
+#emailcalculatorcolorInput,
 #customBackgroundInput {
     width: 60px;
     height: 12px;
 }
 
-#numberofemailtypecolorInput {
+#emailcalculatorcolortypeInput {
     width: 60px;
     height: 16px;
 }

@@ -2,17 +2,17 @@ function scrapeAddonVersion(actualVersion, translatedMessage) {
     fetch('https://addons.mozilla.org/api/v5/addons/search/?app=firefox&appversion=123.0&author=17444166&page=1&type=extension')
     .then(response => response.json()) 
     .then(data => {
-        const addonData = data.results[0]["current_version"]
-        const newVersion = addonData["version"]
-        const newVersionUrl = addonData["file"]["url"]
-        const divNewVersion = document.querySelector(".linkNewVersion");
+        const addonData = data.results[0]['current_version']
+        const newVersion = addonData['version']
+        const newVersionUrl = addonData['file']['url']
+        const divNewVersion = document.querySelector('.linkNewVersion');
 
         if (newVersion !== actualVersion) {
-            divNewVersion.style.display = "flex"
-            divNewVersion.href = newVersionUrl
-            document.querySelector(".newVersion").textContent = `🔔 ${translatedMessage} v${newVersion}`
+            divNewVersion.style.display = 'flex'
+            divNewVersion.href = navigator.userAgent.toLowerCase().indexOf('firefox') > -1 ? newVersionUrl : 'https://chromewebstore.google.com/detail/outlook-web-plus/jgomcpcjiffhcbmodgkekfenhhmjphpn'
+            document.querySelector('.newVersion').textContent = `🔔 ${translatedMessage} v${newVersion}`
         } else {
-            divNewVersion.style.display = "none"
+            divNewVersion.style.display = 'none'
         }
     })
     .catch(error => {
@@ -22,17 +22,17 @@ function scrapeAddonVersion(actualVersion, translatedMessage) {
 
 const colorChecker = (ms = 100) => {
     const findColorInput = () => {
-        const textInput = document.getElementById("numberofemailcolorInput");
-        const colorInput = document.querySelector(".numberofemailtypecolorInput");
+        const textInput = document.getElementById('emailcalculatorcolorInput');
+        const colorInput = document.getElementById('emailcalculatorcolortypeInput');
 
         if (textInput) {
-            textInput.addEventListener("input", function (event) {
-                chrome.storage.local.set({ numberOfEmailColor: event.target.value });
+            textInput.addEventListener('input', function (event) {
+                chrome.storage.local.set({ emailCalculatorColor: event.target.value });
                 colorInput.style.backgroundColor = event.target.value;
             });
         
-            textInput.addEventListener("change", function (event) {
-                chrome.storage.local.set({ numberOfEmailColor: event.target.value });
+            textInput.addEventListener('change', function (event) {
+                chrome.storage.local.set({ emailCalculatorColor: event.target.value });
                 colorInput.style.backgroundColor = event.target.value;
             });
 
@@ -55,7 +55,7 @@ const updateInputElement = (id, storageKey) => {
                     inputElement.value = value[storageKey];
                 }
 
-                inputElement.addEventListener("input", function (e) {
+                inputElement.addEventListener('input', function (e) {
                     const newValue = inputElement.type === 'checkbox' ? e.target.checked : e.target.value;
                     chrome.storage.local.set({ [storageKey]: newValue });
                 });
@@ -66,43 +66,44 @@ const updateInputElement = (id, storageKey) => {
 
 window.onload = function() {
     // Updaters
-    updateInputElement("hideleftbannerInput", "hideLeftRail");
-    updateInputElement("hidetopiconsInput", "hideTopIcons");
-    updateInputElement("hidefirstemailadInput", "hideFirstemailAd");                        
+    updateInputElement('hideleftbannerInput', 'hideLeftRail');
+    updateInputElement('hidetopiconsInput', 'hideTopIcons');
+    updateInputElement('hidefirstemailadInput', 'hideFirstemailAd');                        
     colorChecker();
-    updateInputElement("addpremiumlogoInput", "premiumLogo");
-    updateInputElement("addnumberofemailInput", "addNumberOfEmail");
-    updateInputElement("numberofemailcolorInput", "numberOfEmailColor");
-    updateInputElement("numberofemailtypecolorInput", "numberOfEmailColor");
-    updateInputElement("addcheckallbuttonInput", "checkAllVisible");
-    updateInputElement("addaligntitlefolderInput", "alignTitle");
-    updateInputElement("addcustomBackgroundInput", "addcustomBackground");
-    updateInputElement("customBackgroundInput", "customBackground");
-    updateInputElement("addtransparencytobarInput", "topbarTransparency");
-    updateInputElement("addsupportandratebuttonInput", "supportAndRateButton");
+    updateInputElement('addemailcalculatorInput', 'addEmailCalculator');
+    updateInputElement('emailcalculatorcolorInput', 'emailCalculatorColor');
+    updateInputElement('emailcalculatorcolortypeInput', 'emailCalculatorColor');
+    updateInputElement('addaligntitlefolderInput', 'alignTitle');
+    updateInputElement('addcustomBackgroundInput', 'addcustomBackground');
+    updateInputElement('customBackgroundInput', 'customBackground');
+    updateInputElement('addtransparencytobarInput', 'topbarTransparency');
+    updateInputElement('addsupportandratebuttonInput', 'supportAndRateButton');
 
     // Locales
-    document.getElementById("ads_title_text").textContent = chrome.i18n.getMessage("ads_text");
-    document.getElementById("hide_left_rail_text").textContent = chrome.i18n.getMessage("cfg_hide_left_rail");
-    document.getElementById("hide_top_icons_text").textContent = chrome.i18n.getMessage("cfg_hide_top_icons");
-    document.getElementById("extras_title_text").textContent = chrome.i18n.getMessage("extras_text");
-    document.getElementById("outlook_logo_text").textContent = chrome.i18n.getMessage("cfg_outlook_logo");
-    document.getElementById("email_counter_text").textContent = chrome.i18n.getMessage("cfg_email_counter");
-    document.getElementById("check_all_emails_text").textContent = chrome.i18n.getMessage("cfg_check_all_emails_button");
-    document.getElementById("align_title_text").textContent = chrome.i18n.getMessage("cfg_align_title_folder");
-    document.getElementById("custom_background_text").textContent = chrome.i18n.getMessage("cfg_custom_background");
-    document.getElementById("transparency_topbar_text").textContent = chrome.i18n.getMessage("cfg_transparency_topbar");
-    document.getElementById("support_rate_topbar_text").textContent = chrome.i18n.getMessage("cfg_support_rate_topbar");
-    document.getElementById("topButtonsCalendar_text").textContent = chrome.i18n.getMessage("cfg_open_calendar");
-    document.getElementById("topButtonsOutlook_text").textContent = chrome.i18n.getMessage("cfg_open_outlook");
-    document.getElementById("hide_firstemail_ad_text").textContent = chrome.i18n.getMessage("cfg_hide_firstemail_ad");
+    document.getElementById('ads_title_text').textContent = chrome.i18n.getMessage('ads_text');
+    document.getElementById('hide_left_rail_text').textContent = chrome.i18n.getMessage('cfg_hide_left_rail');
+    document.getElementById('hide_top_icons_text').textContent = chrome.i18n.getMessage('cfg_hide_top_icons');
+    document.getElementById('extras_title_text').textContent = chrome.i18n.getMessage('extras_text');
+    document.getElementById('email_counter_text').textContent = chrome.i18n.getMessage('cfg_email_counter');
+    document.getElementById('align_title_text').textContent = chrome.i18n.getMessage('cfg_align_title_folder');
+    document.getElementById('custom_background_text').textContent = chrome.i18n.getMessage('cfg_custom_background');
+    document.getElementById('transparency_topbar_text').textContent = chrome.i18n.getMessage('cfg_transparency_topbar');
+    document.getElementById('support_rate_topbar_text').textContent = chrome.i18n.getMessage('cfg_support_rate_topbar');
+    document.getElementById('topButtonsCalendar_text').textContent = chrome.i18n.getMessage('cfg_open_calendar');
+    document.getElementById('topButtonsOutlook_text').textContent = chrome.i18n.getMessage('cfg_open_outlook');
+    document.getElementById('hide_firstemail_ad_text').textContent = chrome.i18n.getMessage('cfg_hide_firstemail_ad');
 
     // Version
     let manifestData = chrome.runtime.getManifest();
-    document.querySelector(".extVersion").textContent = `v${manifestData.version}`;
+    document.querySelector('.extVersion').textContent = `v${manifestData.version}`;
 
-    scrapeAddonVersion(manifestData.version, chrome.i18n.getMessage("cfg_new_version"));
+    scrapeAddonVersion(manifestData.version, chrome.i18n.getMessage('cfg_new_version'));
     setInterval(() => {
-        scrapeAddonVersion(manifestData.version, chrome.i18n.getMessage("cfg_new_version"));
+        scrapeAddonVersion(manifestData.version, chrome.i18n.getMessage('cfg_new_version'));
     }, 12 * 60 * 60 * 1000); // Check every 12 hours if a new version is available if browser is already open
+
+    // Rating
+    const firefoxLink = 'https://addons.mozilla.org/fr/firefox/addon/outlook-web-plus';
+	const chromeLink = 'https://chromewebstore.google.com/detail/outlook-web-plus/jgomcpcjiffhcbmodgkekfenhhmjphpn';
+    document.querySelector('.rating').href = (navigator.userAgent.toLowerCase().indexOf('firefox') > -1 ? firefoxLink : chromeLink) + '/reviews';
 };

@@ -10,7 +10,6 @@
     "extras_text": {"message": "Дополнительно"},
     "cfg_outlook_logo": {"message": "Логотип Outlook+"},
     "cfg_email_counter": {"message": "Счетчик электронной почты"},
-    "cfg_check_all_emails_button": {"message": "Кнопка \"Проверить все письма\""},
     "cfg_align_title_folder": {"message": "Выравнивание заголовка папки"},
     "cfg_custom_background": {"message": "URL настраиваемой темы фона"},
     "cfg_transparency_topbar": {"message": "Прозрачность верхней панели"},
