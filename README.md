@@ -30,7 +30,6 @@
 
 - ✅ Add/Remove the left banner containing quick links and Microsoft 365 content.
 - ✅ Add/Remove the Meet, Skype, and OneNote icons from the top toolbar.
-- ✅ Add/Remove Outlook+ Premium Logo
 - ✅ Add/Remove Email counter (+ Color Support, RGB, RGBA, Hexa, Color Name)
 - ✅ Add/Remove 'Check all email' button
 - ✅ Add/Remove Align Title Folder
