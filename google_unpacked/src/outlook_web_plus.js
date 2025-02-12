@@ -30,15 +30,14 @@ const start = async () => {
 
 		await Promise.all([
 			cleanLeftRail(defaultMs),			
-			cleanFirstEmailAd(defaultMs),
+			cleanFirstEmailAd(300),
 			emailCalculator(defaultMs),
 			emailCalculatorReloader(defaultMs),
 			resizeHandler(defaultMs),
 			alignFolderTitle(defaultMs),
 			emailFolderListeners(defaultMs),
 			backgroundChanger(defaultMs),
-			topbarTransparencyChanger(defaultMs)
-			
+			topbarTransparencyChanger(400)
         ]);
 	
 		cleanTopBarIcons(300)
@@ -172,14 +171,13 @@ const resizeHandler = () => {
 const emailCalculatorReloader = () => {
 	document.addEventListener('click', (e) => { 
 		const clickedElement = e.target.parentNode.parentNode.parentNode;
-
 		if (
-			clickedElement.classList.contains('is-checked') ||
-			clickedElement.id.startsWith('ok-') ||
-			clickedElement.classList.contains('_EhYJ') ||
-			clickedElement.classList.contains('ac0xq') ||
-			clickedElement.classList.contains('p4pwT') ||
-			clickedElement.parentNode.classList.contains('BPfgd')
+			clickedElement.classList.contains('is-checked') || // Checkboxs
+			clickedElement.id.startsWith('ok-') || // Ok button when delete email
+			// clickedElement.classList.contains('_EhYJ') || // Entire title div, bugged
+			clickedElement.classList.contains('ac0xq') || // Select button checkbox
+			clickedElement.classList.contains('p4pwT') || // Select button title
+			clickedElement.parentNode.classList.contains('BPfgd') // Select button padding
 		) {
 			emailCalculator();
 			alignFolderTitle();
@@ -192,7 +190,6 @@ const emailCalculator = (ms = 0) => {
 
 	const findFolder = () => {
 		counter++;
-
 		const folderTitle = document.querySelector('.jXaVF');
 		const folderTitleText = folderTitle ? folderTitle.innerText : null;
 		const numberOfEmailElement = document.querySelector('.wk4Sg');
@@ -200,6 +197,17 @@ const emailCalculator = (ms = 0) => {
 
 		if (window.location.href.includes("calendar")) {
 			clearInterval(timer);
+			return
+		}
+
+		if (emptyFolder) {
+			if (regexEmail.test(folderTitleText)) {
+				folderTitle.innerHTML = folderTitleText.replace(regexEmail, `<b class="mailColor" style="color: ${emailCalculatorColor}; display: ${addEmailCalculator ? 'inline' : 'none'}"> (0 ${emailsText.slice(0, -1)})</b>`);
+			} else {
+				folderTitle.innerHTML = `${folderTitleText} <b class="mailColor" style="color: ${emailCalculatorColor}; display: ${addEmailCalculator ? 'inline' : 'none'}"> (0 ${emailsText.slice(0, -1)})</b>`;
+			}
+			clearInterval(timer);
+			return
 		}
 
 		if (folderTitle && numberOfEmailElement) {
@@ -234,15 +242,7 @@ const emailCalculator = (ms = 0) => {
 				}
 				clearInterval(timer);
 			}
-		}
-
-		if (counter > 200 || emptyFolder && folderTitle) {
-			if (regexEmail.test(folderTitleText)) {
-				folderTitle.innerHTML = folderTitleText.replace(regexEmail, `<b class="mailColor" style="color: ${emailCalculatorColor}; display: ${addEmailCalculator ? 'inline' : 'none'}"> (0 ${emailsText.slice(0, -1)})</b>`);
-			} else {
-				folderTitle.innerHTML = `${folderTitleText} <b class="mailColor" style="color: ${emailCalculatorColor}; display: ${addEmailCalculator ? 'inline' : 'none'}"> (0 ${emailsText.slice(0, -1)})</b>`;
-			}
-			clearInterval(timer);
+			return
 		}
 	}
 	const timer = setInterval(findFolder, ms);
@@ -253,13 +253,15 @@ const cleanLeftRail = () => {
     leftRail.style.display = hideLeftRail ? 'none' : 'block';
 }
 
-const alignFolderTitle = (ms = 0) => {
+const alignFolderTitle = (ms = 0, reloader = false) => {
 	const findFolderTitle = () => {
 		const folderTitle = document.querySelector('.IG8s8');
 		if (folderTitle) {
 			alignTitle ? folderTitle.style.paddingLeft = '0px' : folderTitle.style.paddingLeft = '16px';
-			clearInterval(timer);
+		} else {
+			// console.log(`folderTitle not found`)
 		}
+		clearInterval(timer);
 	}
 	const timer = setInterval(findFolderTitle, ms);
 }
@@ -290,7 +292,7 @@ const cleanFirstEmailAd = (ms = 0) => {
 			clearInterval(timer);
 		}
 
-		if (counter >= 60) {
+		if (counter >= 30) {
 			clearInterval(timer);
 		}
 		counter++;
@@ -300,7 +302,7 @@ const cleanFirstEmailAd = (ms = 0) => {
 
 const emailFolderListeners = (ms = 0) => {
 	const findButtons = () => {
-		const buttons = document.querySelectorAll('.C2IG3');
+		const buttons = document.querySelectorAll('.oTkSL');
 		if (buttons) {
 			buttons.forEach(button => {
 				button.addEventListener('click', () => {
@@ -308,10 +310,10 @@ const emailFolderListeners = (ms = 0) => {
 						observer.disconnect();
 						observer = null;
 					}
-					setTimeout(emailCalculatorReloader, 0);
-					setTimeout(alignFolderTitle, 0);
-					setTimeout(emailCalculator, 0);
-					setTimeout(cleanFirstEmailAd, 0);
+					setTimeout(emailCalculatorReloader, 150);
+					setTimeout(alignFolderTitle, 150);
+					setTimeout(emailCalculator, 150);
+					setTimeout(cleanFirstEmailAd, 150);
 				});
 			});
 			clearInterval(timer);
@@ -327,6 +329,7 @@ const backgroundChanger = (ms = 0) => {
 			backgroundNav.style.backgroundImage = `url("${customBackground}")`;
 			backgroundNav.style.backgroundPosition = 'center';
 			backgroundNav.style.backgroundRepeatX = 'repeat';
+			backgroundNav.style.backgroundSize = 'cover';
 		}
 		if (!addcustomBackground) {
 			backgroundNav.style.backgroundImage = '';
@@ -338,11 +341,11 @@ const backgroundChanger = (ms = 0) => {
 
 const topbarTransparencyChanger = (ms = 0) => {
 	const findTopbarElements = () => {
+		const o365Buttons = document.querySelectorAll('.o365sx-button');
 		const outlookButton = document.querySelector('.o365sx-appName');
-		const o365Button = document.querySelectorAll('.o365sx-button');
 		const teamsButton = document.querySelector('.nUPgy');
 
-		if (outlookButton && o365Button.length == 12 && teamsButton) {
+		if (outlookButton && o365Buttons.length >= 8 && teamsButton) {
 			const computedStyles = getComputedStyle(outlookButton);
 			const currentBackgroundColor = computedStyles.backgroundColor;
 			const transparencyConverter = convertToRGBA(currentBackgroundColor, topbarTransparency ? 0 : 0.8);
@@ -365,8 +368,17 @@ const topbarTransparencyChanger = (ms = 0) => {
 			outlookButton.style.backgroundColor = transparencyConverter;
 			teamsButton.style.backgroundColor = transparencyConverter;
 
-			o365Button.forEach(topbarbutton => {
+			o365Buttons.forEach(topbarbutton => {
 				topbarbutton.style.backgroundColor = transparencyConverter;
+				topbarbutton.style.transition = "background-color 0.1s ease-out";
+
+				topbarbutton.addEventListener("mouseover", () => {
+					topbarbutton.style.backgroundColor = "rgba(255, 255, 255, 0.2)"; // Fond opaque au survol
+				});
+			
+				topbarbutton.addEventListener("mouseout", () => {
+					topbarbutton.style.backgroundColor = transparencyConverter; // Revenir à la transparence
+				});
 			});
 
 			clearInterval(timer);
@@ -381,7 +393,7 @@ const addSupportAndRate = (ms = 0) => {
 		const rateButton = document.getElementById('rateAndSupport_container');
 
 		if (topBarButtons) {
-			if (supportAndRateButton && topBarButtons.children.length == 9) {
+			if (supportAndRateButton && topBarButtons.children.length == 8) {
 				const newDiv = document.createElement('div');
 				const firefoxLink = 'https://addons.mozilla.org/fr/firefox/addon/outlook-web-plus/reviews';
 				const chromeLink = 'https://chromewebstore.google.com/detail/outlook-web-plus/jgomcpcjiffhcbmodgkekfenhhmjphpn/reviews';
@@ -398,6 +410,14 @@ const addSupportAndRate = (ms = 0) => {
 				link.style.alignItems = 'center';
 				link.href = navigator.userAgent.toLowerCase().indexOf('firefox') > -1 ? firefoxLink : chromeLink;
 				link.target = '_blank';
+
+				link.style.transition = "background-color 0.1s ease-out";
+				link.addEventListener("mouseover", () => {
+					link.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
+				});
+				link.addEventListener("mouseout", () => {
+					link.style.backgroundColor = "rgba(255, 255, 255, 0)";
+				});
 
 				const imgIcone = document.createElement('img');
 				imgIcone.src = 'https://raw.githubusercontent.com/rztprog/outlook-web-plus/main/icons/stars_rating.png'

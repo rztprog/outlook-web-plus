@@ -1,6 +1,6 @@
 {
     "extensionName": {"message": "Outlook Web Plus"},
-    "extensionDescription": {"message": "Remove ads and enhance Outlook web mailbox."},
+    "extensionDescription": {"message": "Remove ads and enhance Outlook web mailbox"},
     
     "ads_text": {"message": "Ads"},
     "cfg_hide_left_rail": {"message": "Hide Left Rail"},
