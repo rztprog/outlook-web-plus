@@ -67,7 +67,6 @@ const updateInputElement = (id, storageKey) => {
 window.onload = function() {
     // Updaters
     updateInputElement('hideleftbannerInput', 'hideLeftRail');
-    updateInputElement('hidetopiconsInput', 'hideTopIcons');
     updateInputElement('hidefirstemailadInput', 'hideFirstemailAd');                        
     colorChecker();
     updateInputElement('addemailcalculatorInput', 'addEmailCalculator');
@@ -82,7 +81,6 @@ window.onload = function() {
     // Locales
     document.getElementById('ads_title_text').textContent = chrome.i18n.getMessage('ads_text');
     document.getElementById('hide_left_rail_text').textContent = chrome.i18n.getMessage('cfg_hide_left_rail');
-    document.getElementById('hide_top_icons_text').textContent = chrome.i18n.getMessage('cfg_hide_top_icons');
     document.getElementById('extras_title_text').textContent = chrome.i18n.getMessage('extras_text');
     document.getElementById('email_counter_text').textContent = chrome.i18n.getMessage('cfg_email_counter');
     document.getElementById('align_title_text').textContent = chrome.i18n.getMessage('cfg_align_title_folder');
