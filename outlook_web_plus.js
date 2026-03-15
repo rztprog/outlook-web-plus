@@ -28,15 +28,15 @@ const start = async () => {
 		clearInterval(startTimer);
 
 		await Promise.all([
-			cleanLeftRail(defaultMs),			
-			cleanFirstEmailAd(300),
-			emailCalculator(defaultMs),
-			emailCalculatorReloader(defaultMs),
-			resizeHandler(defaultMs),
-			alignFolderTitle(defaultMs),
-			emailFolderListeners(defaultMs),
-			backgroundChanger(defaultMs),
-			topbarTransparencyChanger(400)
+			cleanLeftRail(defaultMs), // ok			
+			cleanFirstEmailAd(300), // ok
+			emailCalculator(defaultMs), // normalement ok
+			emailCalculatorReloader(defaultMs),  // ok
+			resizeHandler(defaultMs), // ok
+			alignFolderTitle(defaultMs), // ok
+			emailFolderListeners(defaultMs), // ok
+			backgroundChanger(defaultMs), // ok
+			topbarTransparencyChanger(400) // ok
         ]);
 	
 		addSupportAndRate(300);
