@@ -1,7 +1,7 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "__MSG_extensionName__",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "__MSG_extensionDescription__",
 
   "icons": {
@@ -16,10 +16,10 @@
   "content_scripts": [
     {
       "matches": [
-      	"*://*.outlook.live.com/*",
-       "*://*.outlook.office.com/*",
-       "*://*.outlook.office365.com/*",
-       "*://*.outlook.cloud.microsoft/*"
+        "*://*.outlook.live.com/*",
+        "*://*.outlook.office.com/*",
+        "*://*.outlook.office365.com/*",
+        "*://*.outlook.cloud.microsoft/*"
       ],
       "js": ["./src/outlook_web_plus_min.js"]
     }
@@ -27,7 +27,7 @@
 
   "default_locale": "en",
 
-  "browser_action": {
+  "action": {
     "default_icon":{
       "48": "icons/mop48.png",
       "96": "icons/mop96.png"
