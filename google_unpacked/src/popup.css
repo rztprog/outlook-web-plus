@@ -1,64 +1,53 @@
-* {
+*, *::after, *::before {
     margin: 0;
     padding: 0;
-}
-
-h2 {
-    font-family: 'SegoeUI-SemiBold-final', 'Segoe UI Semibold', 'SegoeUI-Regular-final', 'Segoe UI', 'Segoe', -apple-system, 'BlinkMacSystemFont', 'Roboto', 'Helvetica Neue', 'Tahoma', 'Helvetica', 'Arial', sans-serif;
+    box-sizing: border-box;
 }
 
 body {
-    overflow: hidden;
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 8px;
-    max-width: 18rem;
-	min-width: 16rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 14px;
+    min-height: 700px;
+    background: #f5f7fb;
+    color: #1f2937;
+    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-header {
+.popup {
+    width: 350px;
+}
+
+.popup-header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 12px;
+	
 }
 
-a {
-    text-decoration: none;
-    color: black;
+.icon {
+    width: 64px;
+    height: 64px;
 }
 
-sup {
-    vertical-align: super;
+.titlePopup {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+    color: #143447;
 }
 
-footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-}
-
-#emailcalculatorcolorInput,
-#customBackgroundInput {
-    width: 60px;
-    height: 12px;
-}
-
-#emailcalculatorcolortypeInput {
-    width: 60px;
-    height: 16px;
+.titlePopup sup {
+    color: #0078d4;
 }
 
 .topButtons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.topButtonsCalendar,
-.topButtonsOutlook {
-    display: flex;
-    justify-content: space-around;
-    font-size: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
 }
 
 .svgCalendar,
@@ -66,157 +55,274 @@ footer {
     margin-left: 5px;
 }
 
-/* Getcssscan.com inspired button */
-.button-29 {
-    align-items: center;
-    appearance: none;
-    background-image: radial-gradient(100% 100% at 100% 0, #50D9FF 0, #0078D4 100%);
-    border-radius: 5px;
-    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
+.primary-button {
     display: flex;
-    height: 48px;
-    width: 100%;
+    align-items: center;
     justify-content: center;
-    line-height: 1;
-    overflow: hidden;
-    transition: box-shadow .20s,transform .20s;
-    margin: 8px 2px;
+    height: 48px;
+	width: 100%;
+    padding: 30px 0;
+	line-height: 1;
+	overflow: hidden;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #0f9eed, #0078d4);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+	transition: box-shadow .20s,transform .20s;
+	box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
 }
 
-.button-29:hover {
-    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
-    /* transform: translateY(-1px); */
+.primary-button:hover {
+	box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
 }
 
-.button-29:active {
-  box-shadow: #3c4fe0 0 3px 7px inset;
-  transform: translateY(1px);
+.primary-button:active {
+    box-shadow: #3c4fe0 0 3px 7px inset;
+	transform: translateY(1px);
 }
 
-.numberofemailtypecolorInput {
-    margin-left: 1px;
-    width: 30px;
-    height: 12px;
-    background-color: #000;
-    border: 2px solid grey;
-    border-radius: 2px;
+.settings-card {
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #d8dee9;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
 }
 
-.github:hover {
-    color: rgb(21, 45, 60);
+.settings-card h2 {
+    margin-bottom: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0078d4;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
-.rating:hover {
-    color: rgb(235, 235, 0);
+.setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 0;
+    border-top: 1px solid #eef2f7;
+    user-select: none;
 }
 
-.rating:hover::before,
-.github:hover::before{
-    position: absolute;
-    font-family: "Font Awesome 6 Free";
-    font-weight: bold;
-    font-size: 16px;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+.setting-row:first-of-type {
+    border-top: 0;
+    padding-top: 0;
 }
 
-.rating:hover::before{
-    content: "\f5c0";
-}
-
-.github:hover::before{
-    color: transparent;
-    content: "\f111";
-}
-
-.icon {
-    width: fit-content;
-}
-
-.labels {
+.setting-row span {
     display: flex;
     flex-direction: column;
+    gap: 2px;
+    min-width: 0;
 }
 
-.ad,
-.extra {
-    user-select: none;
+.setting-row strong {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.setting-row small {
+    font-size: 11px;
+    line-height: 1.25;
+    color: #6b7280;
+}
+
+.switch {
+    appearance: none;
+    position: relative;
+    width: 38px;
+    height: 22px;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: #cbd5e1;
+    cursor: pointer;
+    transition: background 0.18s ease;
+}
+
+.switch::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.25);
+    transition: transform 0.18s ease;
+}
+
+.switch:checked {
+    background: #0078d4;
+}
+
+.switch:checked::before {
+    transform: translateX(16px);
+}
+
+#emailcalculatorcolorInput::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+#emailcalculatorcolorInput::-webkit-color-swatch {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+}
+
+#emailcalculatorcolorInput::-moz-color-swatch {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+}
+
+#emailcalculatorcolortypeInput {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    border: 1px solid #d8dee9;
+    border-radius: 8px;
+	margin-left: 10px;
+    background: #000000;
+}
+
+.text-input {
+    width: 100%;
+    height: 32px;
+    margin: 4px 0 8px;
+    padding: 0 10px;
+    border: 1px solid #d8dee9;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #111827;
+    outline: none;
+}
+
+.text-input:focus {
+    border-color: #0078d4;
+    box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.12);
+}
+
+.color-input-row {
+    display: flex;
+	justify-content: center;
+    align-items: center;
+	margin: 4px 0 8px;
+}
+
+.color-input-row .text-input {
+    margin: 0;
+}
+
+footer {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 2px 2px 0;
 }
 
-.ad span,
-.extra span {
-    margin-left: 6px;
-    margin-right: 6px;
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.ads,
-.extras {
-    padding: 12px;
-    border-radius: 4px;
-    border: 1px solid #bbb;
-    transition: border 0.4s ease-in-out;
+footer a {
+    color: #111827;
+    font-size: 16px;
+    text-decoration: none;
 }
 
-.ads:hover,
-.extras:hover {
-    border: 1px solid #0078D4;
-    transition: border 0.4s ease-in-out;
+footer a:hover {
+    color: #0078d4;
 }
 
-.extVersion{
-    font-family: Arial;
-    font-size: 10px;
+.version {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #374151;
 }
 
 .linkNewVersion {
-    margin-top: 8px;
-    font-family: roboto;
     display: none;
-    padding: 15px 0px;
-    justify-content: center;
+	justify-content: center;
     align-items: center;
     width: 100%;
-    border-radius: 4px;
-    outline: 0;
-    background-color: #FF4742;
-    border: 1px solid #FF4742;
-    box-sizing: border-box;
-    color: white;
+    margin-top: 8px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #ff4742;
+	border: 1px solid #FF4742;
+	color: #FF4742;
+    text-align: center;
+    text-decoration: none;
+	position: relative;
+	background: none;
+	outline: 0;
 }
 
-.linkNewVersion:hover,
-.linkNewVersion:active {
-  background-color: initial;
-  background-position: 0 0;
-  border: 1px solid #FF4742;
-  color: #FF4742;
+.newVersion{
+	font-family: roboto;
+	font-size: 1rem;
+    font-weight: 400;
 }
 
-.linkNewVersion:active {
-    opacity: .5;
+.linkNewVersion::before, .linkNewVersion::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: #ff4742;
+	border-radius: 10px;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transform: scaleX(0);
+    transition: background 0.5s, transform 0.5s, opacity 0.5s ease-in;
 }
 
-/* Shiny Effet on title */
-@keyframes shiny {
-    0% {
-        background-position: -100% 0;
-    }
-    100% {
-        background-position: 100% 0;
-    }
+.linkNewVersion::before {
+    left: -10%;
 }
 
-.titlePopup {
-    background: linear-gradient(90deg, rgba(20, 144, 223), rgba(40, 168, 234), #161d1f, rgba(40, 168, 234), rgba(20, 144, 223));
-    background-size: 200% 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: shiny 5s linear infinite;
-    font-size: 24px;
-    font-weight: bold;
+.linkNewVersion::after {
+    right: -10%;
+}
+
+.linkNewVersion:hover .newVersion {
+    color: #fff;
+}
+
+.linkNewVersion:hover::after {
+    transform: scale(1);
+}
+
+.rating {
+	transition: color 0.2s ease;
+	transition: color .2s, filter .2s;
+}
+
+.rating:hover {
+	color: #000;
+	filter: drop-shadow(0 0 4px #0078d4)
+			drop-shadow(0 0 8px #0078d4);
+}
+
+.github {
+	transition: color 0.2s ease;
+	transition: color .2s, filter .2s;
+}
+
+.github:hover {
+	filter: drop-shadow(0 0 4px #0078d4)
+			drop-shadow(0 0 8px #0078d4);
 }

@@ -1,21 +1,25 @@
 {
     "extensionName": {"message": "Outlook Web Plus"},
     "extensionDescription": {"message": "Remove ads and enhance Outlook web mailbox"},
-    
-    "ads_text": {"message": "Ads"},
-    "cfg_hide_left_rail": {"message": "Hide Left Rail"},
+    "ads_text": {"message": "Cleanup"},
     "cfg_hide_firstemail_ad": {"message": "Hide First Email Ad"},
-
-    "extras_text": {"message": "Extras"},
-    "cfg_outlook_logo": {"message": "Outlook+ Logo"},
+    "cfg_hide_firstemail_ad_desc": {"message": "Hide the first ad in the mail list"},
+    "cfg_hide_left_rail": {"message": "Hide Left Rail"},
+    "cfg_hide_left_rail_desc": {"message": "Hide the Microsoft 365 navigation rail"},
+    "extras_text": {"message": "Customization"},
     "cfg_email_counter": {"message": "Email counter"},
+    "cfg_email_counter_desc": {"message": "Show folder item count near the folder title"},
+    "cfg_counter_color": {"message": "Counter color"},
+    "cfg_counter_color_desc": {"message": "Choose the email counter color (rgb, rgba, hexa, color name)"},
     "cfg_align_title_folder": {"message": "Align folder title"},
+    "cfg_align_title_desc": {"message": "Remove extra spacing near the title"},
     "cfg_custom_background": {"message": "Background Theme URL"},
+    "cfg_custom_background_desc": {"message": "Use a custom image for the top bar"},
     "cfg_transparency_topbar": {"message": "Topbar transparency"},
+    "cfg_transparency_topbar_desc": {"message": "Make top bar elements more transparent"},
     "cfg_support_rate_topbar": {"message": "Support and rating Button"},
-
+    "cfg_support_rate_topbar_desc": {"message": "Show the rating button in Outlook"},
     "cfg_open_outlook": {"message": "Open Outlook"},
     "cfg_open_calendar": {"message": "Open Calendar"},
-
     "cfg_new_version": {"message": "New version available"}
 }

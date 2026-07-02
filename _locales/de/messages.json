@@ -1,21 +1,25 @@
 {
     "extensionName": {"message": "Outlook Web Plus"},
     "extensionDescription": {"message": "Entfernen Sie Werbung und verbessern Sie das Web-Postfach von Outlook"},
-
-    "ads_text": {"message": "Werbung"},
-    "cfg_hide_left_rail": {"message": "Linkes Menü ausblenden"},
-    "cfg_hide_firstemail_ad": {"message": "Erste E-Mail-Anzeige ausblenden"},
-
-    "extras_text": {"message": "Extras"},
-    "cfg_outlook_logo": {"message": "Outlook+ Logo"},
+    "ads_text": {"message": "Bereinigung"},
+    "cfg_hide_firstemail_ad": {"message": "Erste Werbung ausblenden"},
+    "cfg_hide_firstemail_ad_desc": {"message": "Blendet die erste Werbung in der E-Mail-Liste aus"},
+    "cfg_hide_left_rail": {"message": "Linke Seitenleiste ausblenden"},
+    "cfg_hide_left_rail_desc": {"message": "Blendet die Microsoft 365-Navigationsleiste aus"},
+    "extras_text": {"message": "Anpassung"},
     "cfg_email_counter": {"message": "E-Mail-Zähler"},
-    "cfg_align_title_folder": {"message": "Ordner-Titel ausrichten"},
-    "cfg_custom_background": {"message": "Hintergrundthema URL"},
-    "cfg_transparency_topbar": {"message": "Transparenz der topbar"},
-    "cfg_support_rate_topbar": {"message": "Support- und Bewertungsschaltfläche"},
-
+    "cfg_email_counter_desc": {"message": "Zeigt die Anzahl der E-Mails neben dem Ordnertitel an"},
+    "cfg_counter_color": {"message": "Zählerfarbe"},
+    "cfg_counter_color_desc": {"message": "Farbe des Zählers auswählen (rgb, rgba, hexa, Farbname)"},
+    "cfg_align_title_folder": {"message": "Ordnertitel ausrichten"},
+    "cfg_align_title_desc": {"message": "Entfernt unnötigen Abstand um den Titel"},
+    "cfg_custom_background": {"message": "Hintergrundbild-URL"},
+    "cfg_custom_background_desc": {"message": "Ein benutzerdefiniertes Bild für die obere Leiste verwenden"},
+    "cfg_transparency_topbar": {"message": "Transparenz der oberen Leiste"},
+    "cfg_transparency_topbar_desc": {"message": "Macht die Elemente der oberen Leiste transparenter"},
+    "cfg_support_rate_topbar": {"message": "Support- und Bewertungsbutton"},
+    "cfg_support_rate_topbar_desc": {"message": "Zeigt den Bewertungsbutton in Outlook an"},
     "cfg_open_outlook": {"message": "Outlook öffnen"},
     "cfg_open_calendar": {"message": "Kalender öffnen"},
-
     "cfg_new_version": {"message": "Neue Version verfügbar"}
 }

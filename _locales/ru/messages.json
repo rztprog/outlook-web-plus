@@ -1,21 +1,25 @@
 {
     "extensionName": {"message": "Outlook Web Plus"},
     "extensionDescription": {"message": "Удалите рекламу и улучшите веб-почтовый ящик Outlook"},
-
-    "ads_text": {"message": "Реклама"},
+    "ads_text": {"message": "Очистка"},
+    "cfg_hide_firstemail_ad": {"message": "Скрыть первую рекламу"},
+    "cfg_hide_firstemail_ad_desc": {"message": "Скрывает первое рекламное сообщение в списке писем"},
     "cfg_hide_left_rail": {"message": "Скрыть левую панель"},
-    "cfg_hide_firstemail_ad": {"message": "Скрыть рекламу первого письма"},
-
-    "extras_text": {"message": "Дополнительно"},
-    "cfg_outlook_logo": {"message": "Логотип Outlook+"},
-    "cfg_email_counter": {"message": "Счетчик электронной почты"},
+    "cfg_hide_left_rail_desc": {"message": "Скрывает панель навигации Microsoft 365"},
+    "extras_text": {"message": "Настройка"},
+    "cfg_email_counter": {"message": "Счётчик писем"},
+    "cfg_email_counter_desc": {"message": "Показывает количество писем рядом c названием папки"},
+    "cfg_counter_color": {"message": "Цвет счётчика"},
+    "cfg_counter_color_desc": {"message": "Выберите цвет счётчика (rgb, rgba, hex, название цвета)"},
     "cfg_align_title_folder": {"message": "Выравнивание заголовка папки"},
-    "cfg_custom_background": {"message": "URL настраиваемой темы фона"},
+    "cfg_align_title_desc": {"message": "Убирает лишний отступ возле заголовка"},
+    "cfg_custom_background": {"message": "URL фонового изображения"},
+    "cfg_custom_background_desc": {"message": "Использовать собственное изображение для верхней панели"},
     "cfg_transparency_topbar": {"message": "Прозрачность верхней панели"},
+    "cfg_transparency_topbar_desc": {"message": "Делает элементы верхней панели более прозрачными"},
     "cfg_support_rate_topbar": {"message": "Кнопка поддержки и оценки"},
-
+    "cfg_support_rate_topbar_desc": {"message": "Показывает кнопку оценки в Outlook"},
     "cfg_open_outlook": {"message": "Открыть Outlook"},
     "cfg_open_calendar": {"message": "Открыть календарь"},
-
     "cfg_new_version": {"message": "Доступна новая версия"}
 }

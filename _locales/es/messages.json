@@ -1,21 +1,25 @@
 {
     "extensionName": {"message": "Outlook Web Plus"},
     "extensionDescription": {"message": "Elimina los anuncios y mejora el Correo web de Outlook"},
-
-    "ads_text": {"message": "Anuncios"},
-    "cfg_hide_left_rail": {"message": "Ocultar el riel izquierdo"},
-    "cfg_hide_firstemail_ad": {"message": "Ocultar el anuncio del primer correo electrónico"},
-
-    "extras_text": {"message": "Extras"},
-    "cfg_outlook_logo": {"message": "Logo de Outlook+"},
-    "cfg_email_counter": {"message": "Contador de correos electrónicos"},
+    "ads_text": {"message": "Limpieza"},
+    "cfg_hide_firstemail_ad": {"message": "Ocultar el primer anuncio"},
+    "cfg_hide_firstemail_ad_desc": {"message": "Oculta el primer anuncio de la lista de correos"},
+    "cfg_hide_left_rail": {"message": "Ocultar panel lateral"},
+    "cfg_hide_left_rail_desc": {"message": "Oculta el panel de navegación de Microsoft 365"},
+    "extras_text": {"message": "Personalización"},
+    "cfg_email_counter": {"message": "Contador de correos"},
+    "cfg_email_counter_desc": {"message": "Muestra el número de correos junto al título de la carpeta"},
+    "cfg_counter_color": {"message": "Color del contador"},
+    "cfg_counter_color_desc": {"message": "Elige el color del contador (rgb, rgba, hexadecimal o nombre del color)"},
     "cfg_align_title_folder": {"message": "Alinear el título de la carpeta"},
-    "cfg_custom_background": {"message": "Tema de fondo URL"},
-    "cfg_transparency_topbar": {"message": "Transparencia de la topbar"},
-    "cfg_support_rate_topbar": {"message": "Botón de soporte y calificación"},
-
+    "cfg_align_title_desc": {"message": "Elimina el espacio adicional junto al título"},
+    "cfg_custom_background": {"message": "URL del fondo personalizado"},
+    "cfg_custom_background_desc": {"message": "Usar una imagen personalizada para la barra superior"},
+    "cfg_transparency_topbar": {"message": "Transparencia de la barra superior"},
+    "cfg_transparency_topbar_desc": {"message": "Hace que los elementos de la barra superior sean más transparentes"},
+    "cfg_support_rate_topbar": {"message": "Botón de soporte y valoración"},
+    "cfg_support_rate_topbar_desc": {"message": "Muestra el botón de valoración en Outlook"},
     "cfg_open_outlook": {"message": "Abrir Outlook"},
     "cfg_open_calendar": {"message": "Abrir Calendario"},
-
     "cfg_new_version": {"message": "Nueva versión disponible"}
 }

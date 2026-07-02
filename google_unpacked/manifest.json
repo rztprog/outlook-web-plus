@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "__MSG_extensionName__",
-  "version": "1.2.5",
+  "version": "1.3.0",
   "description": "__MSG_extensionDescription__",
 
   "icons": {
@@ -15,7 +15,12 @@
 
   "content_scripts": [
     {
-      "matches": ["*://*.outlook.live.com/*"],
+      "matches": [
+        "*://*.outlook.live.com/*",
+        "*://*.outlook.office.com/*",
+        "*://*.outlook.office365.com/*",
+        "*://*.outlook.cloud.microsoft/*"
+      ],
       "js": ["./src/outlook_web_plus_min.js"]
     }
   ],

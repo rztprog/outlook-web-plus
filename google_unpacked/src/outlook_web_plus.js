@@ -1,7 +1,7 @@
 'use strict';
 let startTimer = null;
 
-// Ads
+// Cleanup
 let hideLeftRail = true;
 let hideFirstemailAd = true;
 
@@ -12,12 +12,14 @@ const defaultMs = 100;
 let observer = null;
 let emailsText = 'emails';
 let addEmailCalculator = true;
-let emailCalculatorColor = 'green';
+let emailCalculatorColor = '#008000';
 let alignTitle = true;
 let addcustomBackground = true;
 let customBackground = 'https://wallpapercave.com/wp/wp2757894.gif';
 let topbarTransparency = true;
 let supportAndRateButton = true;
+let folderTitleObserver = null;
+let currentObservedFolderButton = null;
 
 const start = async () => {
 	if (document.getElementById('OwaTitleBar') !== null) {
@@ -28,15 +30,16 @@ const start = async () => {
 		clearInterval(startTimer);
 
 		await Promise.all([
-			cleanLeftRail(defaultMs),			
-			cleanFirstEmailAd(300),
-			emailCalculator(defaultMs),
-			emailCalculatorReloader(defaultMs),
-			resizeHandler(defaultMs),
-			alignFolderTitle(defaultMs),
-			emailFolderListeners(defaultMs),
-			backgroundChanger(defaultMs),
-			topbarTransparencyChanger(400)
+			cleanLeftRail(defaultMs), // ok			
+			cleanFirstEmailAd(300), // ok
+			cleanBannerAd(300),
+			emailCalculator(emailsText, defaultMs), // ok
+			emailCalculatorReloader(),  // ok
+			resizeHandler(defaultMs), // ok
+			alignFolderTitle(defaultMs), // ok
+			emailFolderListeners(defaultMs), // ok
+			backgroundChanger(defaultMs), // ok
+			topbarTransparencyChanger(400) // ok
         ]);
 	
 		addSupportAndRate(300);
@@ -46,6 +49,7 @@ const start = async () => {
 startTimer = setInterval(start, 200);
 
 chrome.storage.onChanged.addListener(function (changes) {
+	console.log('[OWP Content] storage changed:', changes);
 	const updatedElement = Object.keys(changes)[0];
 	switch (updatedElement) {
 	  	case 'hideLeftRail':
@@ -55,6 +59,7 @@ chrome.storage.onChanged.addListener(function (changes) {
 		case 'hideFirstemailAd':
 			hideFirstemailAd = changes.hideFirstemailAd.newValue;
 			cleanFirstEmailAd();
+			cleanBannerAd();
 			break;
 		case 'addEmailCalculator':
 			addEmailCalculator = changes.addEmailCalculator.newValue;
@@ -62,7 +67,7 @@ chrome.storage.onChanged.addListener(function (changes) {
 			break;
 		case 'emailCalculatorColor':
 			emailCalculatorColor = changes.emailCalculatorColor.newValue;
-			emailCalculator();
+			updateEmailCounterColor();
 			break;
 		case 'alignTitle':
 			alignTitle = changes.alignTitle.newValue;
@@ -159,84 +164,119 @@ const resizeHandler = () => {
 }
 
 const emailCalculatorReloader = () => {
-	document.addEventListener('click', (e) => { 
-		const clickedElement = e.target.parentNode.parentNode.parentNode;
-		if (
-			clickedElement.classList.contains('is-checked') || // Checkboxs
-			clickedElement.id.startsWith('ok-') || // Ok button when delete email
-			// clickedElement.classList.contains('_EhYJ') || // Entire title div, bugged
-			clickedElement.classList.contains('ac0xq') || // Select button checkbox
-			clickedElement.classList.contains('p4pwT') || // Select button title
-			clickedElement.parentNode.classList.contains('BPfgd') // Select button padding
-		) {
-			emailCalculator();
+	document.addEventListener('click', (e) => {
+		const clickedSimple = e.target;
+		const clickedElement = e.target?.parentNode?.parentNode?.parentNode;
+
+		if (!clickedSimple || !clickedElement) return;
+
+		const shouldReload =
+			clickedSimple.classList?.contains('r1ls86vo') ||
+			clickedElement.classList?.contains('is-checked') ||
+			clickedElement.id?.startsWith('ok-') ||
+			clickedElement.classList?.contains('ac0xq') ||
+			clickedElement.classList?.contains('p4pwT') ||
+			clickedElement.parentNode?.classList?.contains('BPfgd');
+
+		if (!shouldReload) return;
+
+		// Fallback : Outlook peut remplacer les nodes après certaines actions.
+		setTimeout(() => {
+			emailFolderListeners();
 			alignFolderTitle();
-		}
-	},{capture: true})
-}
 
-const emailCalculator = (ms = 0) => {
-	let counter = 0;
-
-	const findFolder = () => {
-		counter++;
-		const folderTitle = document.querySelector('.jXaVF');
-		const folderTitleText = folderTitle ? folderTitle.innerText : null;
-		const numberOfEmailElement = document.querySelector('.wk4Sg');
-		const emptyFolder = document.getElementById('EmptyState_MainMessage');
-
-		if (window.location.href.includes("calendar")) {
-			clearInterval(timer);
-			return
-		}
-
-		if (emptyFolder) {
-			if (regexEmail.test(folderTitleText)) {
-				folderTitle.innerHTML = folderTitleText.replace(regexEmail, `<b class="mailColor" style="color: ${emailCalculatorColor}; display: ${addEmailCalculator ? 'inline' : 'none'}"> (0 ${emailsText.slice(0, -1)})</b>`);
+			if (currentObservedFolderButton?.title) {
+				emailCalculator(currentObservedFolderButton.title);
 			} else {
-				folderTitle.innerHTML = `${folderTitleText} <b class="mailColor" style="color: ${emailCalculatorColor}; display: ${addEmailCalculator ? 'inline' : 'none'}"> (0 ${emailsText.slice(0, -1)})</b>`;
+				emailCalculator();
 			}
-			clearInterval(timer);
-			return
-		}
+		}, 100);
+	}, { capture: true });
+};
 
-		if (folderTitle && numberOfEmailElement) {
-			const numberOfEmail = parseInt(numberOfEmailElement.title.match(/-\s(\d+)/)[1]);
-	
-			if (!observer) {
-				observer = new MutationObserver((mutationsList) => {
-					for (const mutation of mutationsList) {
-						if (mutation.type === 'attributes' && mutation.attributeName === 'title') {
-							emailCalculator();
-						}
-					}
-				});
-	
-				observer.observe(numberOfEmailElement, { attributes: true });
-			}
-
-			if (numberOfEmail == 1) {
-				if (regexEmail.test(folderTitleText)) {
-					folderTitle.innerHTML = folderTitleText.replace(regexEmail, `<b class="mailColor" style="color: ${emailCalculatorColor}; display: ${addEmailCalculator ? 'inline' : 'none'}"> (${numberOfEmail} ${emailsText.slice(0, -1)})</b>`);
-				} else {
-					folderTitle.innerHTML = `${folderTitleText} <b class="mailColor" style="color: ${emailCalculatorColor}; display: ${addEmailCalculator ? 'inline' : 'none'}"> (${numberOfEmail} ${emailsText.slice(0, -1)})</b>`;
-				}
-				clearInterval(timer);
-			}
-
-			if (numberOfEmail > 1) {
-				if (regex.test(folderTitleText)) {
-					folderTitle.innerHTML = folderTitleText.replace(regex, `<b class="mailColor" style="color: ${emailCalculatorColor}; display: ${addEmailCalculator ? 'inline' : 'none'}"> (${numberOfEmail} ${emailsText})</b>`);
-				} else {
-					folderTitle.innerHTML = `${folderTitleText} <b class="mailColor" style="color: ${emailCalculatorColor}; display: ${addEmailCalculator ? 'inline' : 'none'}"> (${numberOfEmail} ${emailsText})</b>`;
-				}
-				clearInterval(timer);
-			}
-			return
-		}
+const removeExistingEmailCounter = (folderTitle) => {
+	const existingCounter = folderTitle.querySelector('.mailColor');
+	if (existingCounter) {
+		existingCounter.remove();
 	}
+};
+
+const getFolderCounterText = async (title, folderTitleText) => {
+	if (typeof title === 'string' && title.includes(' - ')) {
+		return title.split(' - ')[1];
+	}
+
+	return await firstStartDetector(folderTitleText);
+};
+
+const updateEmailCounterColor = () => {
+    const counter = document.querySelector('.mailColor');
+
+    if (counter) {
+        counter.style.color = emailCalculatorColor;
+    } else {
+        emailCalculator();
+    }
+};
+
+const emailCalculator = (title = emailsText, ms = 0) => {
+	const findFolder = async () => {
+		const folderTitle = document.querySelector('.jXaVF');
+
+		if (window.location.href.includes('calendar')) {
+			clearInterval(timer);
+			return;
+		}
+
+		if (!folderTitle) {
+			return;
+		}
+
+		folderTitle.style.display = "flex";
+		folderTitle.style.alignItems = "center";
+
+		const cleanFolderTitleText = folderTitle.childNodes[0]?.textContent?.trim() || folderTitle.innerText.trim();
+		const counterText = await getFolderCounterText(title, cleanFolderTitleText);
+
+		if (!counterText) {
+			clearInterval(timer);
+			return;
+		}
+
+		removeExistingEmailCounter(folderTitle);
+
+		const counterElement = document.createElement('b');
+		counterElement.className = 'mailColor';
+		counterElement.textContent = ` ${counterText}`;
+		counterElement.style.color = emailCalculatorColor;
+		counterElement.style.marginLeft = "0.5rem";
+		counterElement.style.display = addEmailCalculator ? 'inline' : 'none';
+
+		folderTitle.appendChild(counterElement);
+		emailsText = counterText;
+
+		clearInterval(timer);
+	};
+
 	const timer = setInterval(findFolder, ms);
-}
+};
+
+const firstStartDetector = (actualTitle, ms = 0) => {
+	return new Promise((resolve) => {
+		const timer = setInterval(() => {
+			const buttons = [...document.querySelectorAll('.oTkSL')];
+
+			const button = buttons.find(button =>
+				button.getAttribute("data-folder-name")?.toLowerCase() === actualTitle.toLowerCase()
+			);
+
+			if (button) {
+				clearInterval(timer);
+				resolve(button.title.split(" - ")[1]);
+			}
+		}, ms);
+	});
+};
 
 const cleanLeftRail = () => {
     const leftRail = document.getElementById('LeftRail');
@@ -274,41 +314,108 @@ const cleanFirstEmailAd = (ms = 0) => {
 	const timer = setInterval(findFirstmailAd, ms);
 }
 
+const cleanBannerAd = (ms = 0) => {
+	// Please use uBlock Origin Extension in addition for a better performance
+	let counter = 0;
+	const findBannerAd = () => {
+		const findBannerAd = document.querySelector('.GssDD');
+		if (findBannerAd) {
+			findBannerAd.style.display = hideFirstemailAd ? 'none' : 'block';
+			clearInterval(timer);
+		}
+
+		if (counter >= 30) {
+			clearInterval(timer);
+		}
+		counter++;
+	}
+	const timer = setInterval(findBannerAd, ms);
+}
+
+const observeCurrentFolderButton = (button) => {
+	if (!button) return;
+
+	// Disconnect previous observer
+	if (folderTitleObserver) {
+		folderTitleObserver.disconnect();
+		folderTitleObserver = null;
+	}
+
+	currentObservedFolderButton = button;
+
+	folderTitleObserver = new MutationObserver((mutationsList) => {
+		for (const mutation of mutationsList) {
+			if (mutation.type === 'attributes' && mutation.attributeName === 'title') {
+				emailCalculator(button.title);
+				alignFolderTitle();
+			}
+		}
+	});
+
+	folderTitleObserver.observe(button, {
+		attributes: true,
+		attributeFilter: ['title']
+	});
+};
+
 const emailFolderListeners = (ms = 0) => {
 	const findButtons = () => {
 		const buttons = document.querySelectorAll('.oTkSL');
-		if (buttons) {
+
+		if (buttons.length) {
 			buttons.forEach(button => {
+				if (button.dataset.owpListenerAttached === 'true') return;
+
+				button.dataset.owpListenerAttached = 'true';
+
 				button.addEventListener('click', () => {
-					if (observer) {
-						observer.disconnect();
-						observer = null;
-					}
-					setTimeout(emailCalculatorReloader, 150);
-					setTimeout(alignFolderTitle, 150);
-					setTimeout(emailCalculator, 150);
-					setTimeout(cleanFirstEmailAd, 150);
+					observeCurrentFolderButton(button);
+
+					setTimeout(() => alignFolderTitle(), 150);
+					setTimeout(() => emailCalculator(button.title), 150);
+					setTimeout(() => cleanFirstEmailAd(), 150);
 				});
 			});
+
+			const folderTitle = document.querySelector('.jXaVF');
+			if (folderTitle) {
+				const cleanFolderTitleText =
+					folderTitle.childNodes[0]?.textContent?.trim() ||
+					folderTitle.innerText.trim();
+
+				const activeButton = [...buttons].find(button =>
+					button.getAttribute('data-folder-name')?.toLowerCase() === cleanFolderTitleText.toLowerCase()
+				);
+
+				if (activeButton) {
+					observeCurrentFolderButton(activeButton);
+				}
+			}
+
 			clearInterval(timer);
 		}
-	}
+	};
+
 	const timer = setInterval(findButtons, ms);
-}
+};
 
 const backgroundChanger = (ms = 0) => {
 	const findBackground = () => {
-		const backgroundNav = document.getElementById("OwaTitleBar").firstElementChild;
-		if (backgroundNav && addcustomBackground) {
+		const backgroundNav = document.getElementById("OwaTitleBar").getElementsByTagName('div')[1];
+		const realNav = backgroundNav.classList.contains("hl2hm"); // Ensure
+
+		if (backgroundNav && realNav && addcustomBackground) {
 			backgroundNav.style.backgroundImage = `url("${customBackground}")`;
 			backgroundNav.style.backgroundPosition = 'center';
 			backgroundNav.style.backgroundRepeatX = 'repeat';
 			backgroundNav.style.backgroundSize = 'cover';
+			clearInterval(timer);
 		}
+
 		if (!addcustomBackground) {
 			backgroundNav.style.backgroundImage = '';
+			clearInterval(timer);
 		}
-		clearInterval(timer);
 	}
 	const timer = setInterval(findBackground, ms);
 }
@@ -400,7 +507,10 @@ const addSupportAndRate = (ms = 0) => {
 			});
 
 			const imgIcone = document.createElement('img');
-			imgIcone.src = 'https://raw.githubusercontent.com/rztprog/outlook-web-plus/main/icons/stars_rating.png'
+			imgIcone.src = chrome.runtime.getURL("icons/etoile.svg");
+			imgIcone.style.color = "white";
+			imgIcone.width = 20;
+			imgIcone.height = 20;
 
 			link.appendChild(imgIcone);
 			newDiv.appendChild(link);

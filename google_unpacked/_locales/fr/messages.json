@@ -1,21 +1,25 @@
 {
     "extensionName": {"message": "Outlook Web Plus"},
     "extensionDescription": {"message": "Supprimez les publicités et améliorez la Boîte mail web d'Outlook"},
-
-    "ads_text": {"message": "Publicités"},
-    "cfg_hide_left_rail": {"message": "Masquer le volet gauche"},
-    "cfg_hide_firstemail_ad": {"message": "Masquer le premier e-mail publicité"},
-
-    "extras_text": {"message": "Extras"},
-    "cfg_outlook_logo": {"message": "Logo Outlook+"},
-    "cfg_email_counter": {"message": "Compteur d'e-mails"},
+    "ads_text": {"message": "Nettoyage"},
+    "cfg_hide_firstemail_ad": {"message": "Masquer la première publicité"},
+    "cfg_hide_firstemail_ad_desc": {"message": "Masque la première publicité dans la liste des emails"},
+    "cfg_hide_left_rail": {"message": "Masquer le panneau latéral"},
+    "cfg_hide_left_rail_desc": {"message": "Masque le panneau de navigation Microsoft 365"},
+    "extras_text": {"message": "Personnalisation"},
+    "cfg_email_counter": {"message": "Compteur d'emails"},
+    "cfg_email_counter_desc": {"message": "Affiche le nombre d'emails à côté du titre du dossier"},
+    "cfg_counter_color": {"message": "Couleur du compteur"},
+    "cfg_counter_color_desc": {"message": "Choisissez la couleur du compteur (rgb, rgba, hexa, nom de couleur)"},
     "cfg_align_title_folder": {"message": "Aligner le titre du dossier"},
-    "cfg_custom_background": {"message": "Thème d'arrière-plan URL"},
-    "cfg_transparency_topbar": {"message": "Transparence de la topbar"},
-    "cfg_support_rate_topbar": {"message": "Bouton support et notation"},
-
+    "cfg_align_title_desc": {"message": "Supprime l'espacement inutile autour du titre"},
+    "cfg_custom_background": {"message": "URL du thème de fond"},
+    "cfg_custom_background_desc": {"message": "Utiliser une image personnalisée pour la barre supérieure"},
+    "cfg_transparency_topbar": {"message": "Transparence de la barre supérieure"},
+    "cfg_transparency_topbar_desc": {"message": "Rend les éléments de la barre supérieure plus transparents"},
+    "cfg_support_rate_topbar": {"message": "Bouton de soutien et d'avis"},
+    "cfg_support_rate_topbar_desc": {"message": "Affiche le bouton de soutien et d'évaluation dans Outlook"},
     "cfg_open_outlook": {"message": "Ouvrir Outlook"},
-    "cfg_open_calendar": {"message": "Ouvrir Calendrier"},
-
+    "cfg_open_calendar": {"message": "Ouvrir le calendrier"},
     "cfg_new_version": {"message": "Nouvelle version disponible"}
 }
